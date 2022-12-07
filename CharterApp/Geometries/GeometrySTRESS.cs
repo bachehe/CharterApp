@@ -17,9 +17,18 @@ namespace CharterApp.Models
             _linearFactor = new();
         }
 
-        public double ZFunction(double x) // wzór tu
+        public double ZFunction(double x)
         {
-            throw new NotImplementedException();
+            double result = 1;
+            double sinValue = 42.5;
+            for (int i = 1; i <= 90; i++)
+            {
+                var upper = Math.Log(0.05) * -1;
+                var lower = 2 * x;
+                var rad = Math.Sin((sinValue * Math.PI) / 180) * Math.Cos((i * Math.PI) / 180); //value 42.5 i think is also user input
+                result = ((upper / lower) * rad) * 10000;
+            }
+            return result;
         }
     }
 }

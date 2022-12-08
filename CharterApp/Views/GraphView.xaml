@@ -14,13 +14,25 @@
             <RowDefinition />
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <!-- description graph -->
         <TextBlock  Text="Graph"/>
+
         <!-- graph -->
         <StackPanel Grid.Row="1">
-            <Label Content="Wykres"/>
-            <Polyline Height="300" Stroke="Black" Points="{Binding Points}"/>
+            <TextBlock Text="block"/>
+                <WpfPlot Content="{Binding DataPlot}"/>
+            <!--<Canvas>
+                <Label Content="Wykres"/>
+                
+                <Polyline Points="{Binding Points}" 
+                          Stretch="Fill" 
+                          Height="300" 
+                          Stroke="Black" />
+            </Canvas>-->
+               
+
+            
         </StackPanel>
         <!-- range selector -->
         <TextBlock Grid.Row="2" Text="range"/>

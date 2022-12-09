@@ -11,17 +11,14 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition />
+            <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- description graph -->
-        <TextBlock  Text="Graph"/>
 
         <!-- graph -->
         <StackPanel Grid.Row="1">
-            <TextBlock Text="block"/>
-                <WpfPlot Content="{Binding DataPlot}"/>
+                <WpfPlot Content="{Binding DataPlot}" Height="850" Width="1200"/>
             <!--<Canvas>
                 <Label Content="Wykres"/>
                 
@@ -30,12 +27,15 @@
                           Height="300" 
                           Stroke="Black" />
             </Canvas>-->
-               
-
+              
             
         </StackPanel>
         <!-- range selector -->
-        <TextBlock Grid.Row="2" Text="range"/>
-
+        <StackPanel Grid.Row="2" Margin="10">
+            <TextBlock FontSize="20" Grid.Row="2" Text="Select range: "/>
+            <TextBox FontSize="20" Text="Start" Width="150" HorizontalAlignment="Left"/>
+            <TextBox FontSize="20" Text="Finish" Width="150" HorizontalAlignment="Left"/>
+            <Button Margin="10" Content="Apply" Width="150" />
+        </StackPanel>
     </Grid>
 </UserControl>

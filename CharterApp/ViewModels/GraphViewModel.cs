@@ -20,6 +20,7 @@ namespace CharterApp.ViewModels
             //Points.Add(new(70, 250));
             //Points.Add(new(230, 299));
 
+            //graph data implementation
             double[] dataX = new double[] { 1, 2, 3, 4, 5 };
             double[] dataY = new double[] { 1, 4, 9, 16, 25 };
 
@@ -29,15 +30,17 @@ namespace CharterApp.ViewModels
             double[] dataXX = new double[] { 5, 7, 12, 16, 25 };
             double[] dataYY = new double[] { 1, 9, 17, 21, 43 };
             DataPlot.Plot.AddScatter(dataXX, dataYY, label: "second");
+
+            //graph style
+            DataPlot.Plot.Style(ScottPlot.Style.Blue2);
+
+            //graph description
             DataPlot.Plot.Legend();
             DataPlot.Plot.Title("CHART");
             DataPlot.Plot.XLabel("Angle");
             DataPlot.Plot.YLabel("EGW");
-            DataPlot.Plot.Layout(left: 100, right: 100, bottom: 100, top: 50);
-            DataPlot.Refresh();
-            
-            
 
+            DataPlot.Refresh();
         }
     }
 }

@@ -18,24 +18,8 @@
 
         <!-- graph -->
         <StackPanel Grid.Row="1">
-                <WpfPlot Content="{Binding DataPlot}" Height="850" Width="1200"/>
-            <!--<Canvas>
-                <Label Content="Wykres"/>
-                
-                <Polyline Points="{Binding Points}" 
-                          Stretch="Fill" 
-                          Height="300" 
-                          Stroke="Black" />
-            </Canvas>-->
-              
-            
-        </StackPanel>
-        <!-- range selector -->
-        <StackPanel Grid.Row="2" Margin="10">
-            <TextBlock FontSize="20" Grid.Row="2" Text="Select range: "/>
-            <TextBox FontSize="20" Text="Start" Width="150" HorizontalAlignment="Left"/>
-            <TextBox FontSize="20" Text="Finish" Width="150" HorizontalAlignment="Left"/>
-            <Button Margin="10" Content="Apply" Width="150" />
+            <WpfPlot Content="{Binding DataPlot}" Height="850" Width="1200"/>
+
         </StackPanel>
     </Grid>
 </UserControl>

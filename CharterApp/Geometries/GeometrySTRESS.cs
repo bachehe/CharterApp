@@ -9,9 +9,8 @@ namespace CharterApp.Models
     public class GeometrySTRESS : IGeometry
     {
         private readonly LinearFactor _linearFactor;
-
         public List<IParametr> Parameters => new() { _linearFactor };
-
+        public string Name => "STRESS";
         public GeometrySTRESS()
         {
             _linearFactor = new();

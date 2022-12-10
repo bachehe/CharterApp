@@ -7,5 +7,10 @@
         public string Unit => "°";
 
         public double Value { get; set; }
+
+        public bool Validate()
+        {
+            return Value >= 0 && Value <= 90;
+        }
     }
 }

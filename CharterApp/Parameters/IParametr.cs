@@ -5,5 +5,6 @@
         string Name { get; }
         string Unit { get; }
         double Value { get; set; }
+        bool Validate();
     }
 }

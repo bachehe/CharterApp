@@ -4,18 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using CharterApp.Models;
+using ScottPlot;
+using ScottPlot.WPF;
 
 namespace CharterApp.ViewModels
 {
     public class GraphViewModel
     {
-        public PointCollection Points { get; }
+        public ScottPlot.WpfPlot DataPlot { get; }
+
         public GraphViewModel()
         {
-            Points = new();
-            Points.Add(new(50, 100));
-            Points.Add(new(70, 250));
-            Points.Add(new(230, 299));
+            DataPlot = new();
+        }
+
+        public void Draw(IGeometry geometry)
+        {
+            var xvalues = new double[91];
+            var yvalues = new double[91];
+
+            for (int x = 1; x < 91; x++)
+            {
+                xvalues[x] = x;
+                yvalues[x] = geometry.ZFunction(x);
+            }
+
+            //graph data implementation
+            DataPlot.Plot.AddScatter(xvalues, yvalues, label: "first");
+
+            //graph style
+            //DataPlot.Plot.Style(ScottPlot.Style.Blue2);
+            DataPlot.BorderBrush = new SolidColorBrush(Colors.White);
+
+            //graph description
+            DataPlot.Plot.Legend();
+            DataPlot.Plot.Title("CHART");
+            DataPlot.Plot.XLabel("Angle");
+            DataPlot.Plot.YLabel("EGW");
+
+            DataPlot.Refresh();
+        }
+        public void Clear()
+        {
+            DataPlot.Plot.ResetLayout();
         }
     }
 }

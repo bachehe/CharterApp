@@ -11,19 +11,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition />
+            <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
-        <!-- description graph -->
-        <TextBlock  Text="Graph"/>
+
+
         <!-- graph -->
         <StackPanel Grid.Row="1">
-            <Label Content="Wykres"/>
-            <Polyline Height="300" Stroke="Black" Points="{Binding Points}"/>
-        </StackPanel>
-        <!-- range selector -->
-        <TextBlock Grid.Row="2" Text="range"/>
+            <WpfPlot Content="{Binding DataPlot}" Height="850" Width="1200"/>
 
+        </StackPanel>
     </Grid>
 </UserControl>

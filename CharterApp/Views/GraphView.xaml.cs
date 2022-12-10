@@ -20,7 +20,6 @@ namespace CharterApp.Views
     {
         public GraphView()
         {
-            DataContext = new GraphViewModel();
             InitializeComponent();
         }
     }

@@ -2,7 +2,7 @@
 {
     public class AngleFactor : IParametr
     {
-        public string Name => "Kąt padania";
+        public string Name => "Angle";
 
         public string Unit => "°";
 

@@ -10,9 +10,10 @@ namespace CharterApp.ViewModels
     public class MainWindowViewModel
     {
         private IGeometry? selectedGeometry;
-
         public List<IGeometry> Geometries { get; }
-        public IGeometry? SelectedGeometry { get => selectedGeometry;
+        public IGeometry? SelectedGeometry 
+        { 
+            get => selectedGeometry;
             set 
             {
                 selectedGeometry = value;
@@ -35,7 +36,6 @@ namespace CharterApp.ViewModels
             DrawCommand = new(OnDrawExecute);
             ClearCommand = new(OnClearExecute);
             GraphViewModel = new();
-
         }
 
         private void OnDrawExecute(object? obj)

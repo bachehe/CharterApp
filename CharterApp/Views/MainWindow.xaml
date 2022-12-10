@@ -8,22 +8,26 @@
         xmlns:vm="clr-namespace:CharterApp.ViewModels"
         d:DataContext ="{d:DesignInstance vm:MainWindowViewModel}"
         Title="MainWindow" 
-        
-        WindowState="Maximized"
-        WindowStyle="None">
-    <Grid>
+        Height="900" Width="1600"   
+        >
+
+    <!--WindowState="Maximized"
+        WindowStyle="None"-->
+
+    <Grid Background="#252c48">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <!-- Menu -->
         <DockPanel Grid.ColumnSpan="2" Grid.Row="0">
+
             <Menu DockPanel.Dock="Top" FontSize="15">
                 <MenuItem Header="_File">
                     <MenuItem Header="_New" />
@@ -39,44 +43,21 @@
                     <MenuItem Header="_Info" />
                 </MenuItem>
             </Menu>
+
+
+
         </DockPanel>
 
 
         <!-- Left Bar -->
-        <Grid Grid.Row="1" Grid.Column="0">
-            <StackPanel Margin="50 100 0 0">
-                <TextBlock FontSize="20" Text="Geometry"/>
-                <ComboBox ItemsSource="{Binding Geometries}" 
-                          SelectedValue="{Binding SelectedGeometry}" 
-                          DisplayMemberPath="Name"
-                          HorizontalAlignment="Left" 
-                          Width="150" FontSize="20" 
-                          Margin="0 10 0 50"/>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <views:UserControlView/>
 
-
-
-                <ItemsControl ItemsSource="{Binding SelectedGeometry.Parameters}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <TextBlock Text="{Binding Name}"/>
-                                <TextBox Text="{Binding Value}" Width="100"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-
-                <Button Content="Draw" Command="{Binding DrawCommand}" Height="100" Width="100"/>
-                <Button Content="Clear" Command="{Binding ClearCommand}" Height="100" Width="100"/>
-
-            </StackPanel>
-
-        </Grid>
+        </StackPanel>
 
         <!-- Graph View -->
-        <StackPanel Grid.Row="1" Grid.Column="1" DataContext="{Binding GraphViewModel}">
+        <StackPanel Grid.Row="2" Grid.Column="1" DataContext="{Binding GraphViewModel}">
             <views:GraphView />
-            
         </StackPanel>
 
     </Grid>

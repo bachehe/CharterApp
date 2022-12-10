@@ -2,7 +2,7 @@
 {
     public class LinearFactor : IParametr
     {
-        public string Name => "współczynnik liniowy";
+        public string Name => "Linear Factor";
         public string Unit => "";
         public double Value { get; set; }
 

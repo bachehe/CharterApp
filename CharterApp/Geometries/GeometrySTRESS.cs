@@ -18,15 +18,14 @@ namespace CharterApp.Models
 
         public double ZFunction(double x)
         {
-            double result = 1;
             double sinValue = 42.5;
-            for (int i = 1; i <= 90; i++)
-            {
-                var upper = Math.Log(0.05) * -1;
-                var lower = 2 * x;
-                var rad = Math.Sin((sinValue * Math.PI) / 180) * Math.Cos((i * Math.PI) / 180); //value 42.5 i think is also user input
-                result = ((upper / lower) * rad) * 10000;
-            }
+            double variable = _linearFactor.Value;
+
+            var upper = Math.Log(0.05) * -1;
+            var lower = 2 * variable;
+            var rad = Math.Sin((sinValue * Math.PI) / 180) * Math.Cos((x * Math.PI) / 180); //value 42.5 i think is also user input
+            var result = ((upper / lower) * rad) * 10000;
+            
             return result;
         }
     }

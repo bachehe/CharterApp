@@ -9,7 +9,6 @@ namespace CharterApp.Models
         private readonly AngleFactor _angleFactor;
 
         public List<IParametr> Parameters => new() { _linearFactor, _angleFactor};
-
         public string Name => "SKP";
 
         public GeometrySKP()

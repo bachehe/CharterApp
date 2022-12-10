@@ -13,12 +13,11 @@ namespace CharterApp.ViewModels
     public class GraphViewModel
     {
         public ScottPlot.WpfPlot DataPlot { get; }
-
         public GraphViewModel()
         {
             DataPlot = new();
         }
-
+        
         public void Draw(IGeometry geometry)
         {
             var xvalues = new double[91];
@@ -29,13 +28,13 @@ namespace CharterApp.ViewModels
                 xvalues[x] = x;
                 yvalues[x] = geometry.ZFunction(x);
             }
-
+            
             //graph data implementation
-            DataPlot.Plot.AddScatter(xvalues, yvalues, label: "first");
+            DataPlot.Plot.AddScatter(xvalues, yvalues, label: $"value");
 
             //graph style
-            //DataPlot.Plot.Style(ScottPlot.Style.Blue2);
             DataPlot.BorderBrush = new SolidColorBrush(Colors.White);
+            DataPlot.Plot.Style(ScottPlot.Style.Blue2);
 
             //graph description
             DataPlot.Plot.Legend();
@@ -47,7 +46,7 @@ namespace CharterApp.ViewModels
         }
         public void Clear()
         {
-            DataPlot.Plot.ResetLayout();
+            DataPlot.Plot.Clear();
         }
     }
 }

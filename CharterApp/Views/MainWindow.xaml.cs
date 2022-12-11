@@ -25,22 +25,6 @@ namespace CharterApp
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
-       
 
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-        private void btnMinimize_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.WindowState == WindowState.Normal)
-                this.WindowState = WindowState.Maximized;
-            else if(this.WindowState == WindowState.Maximized)
-                this.WindowState = WindowState.Normal;
-        }
-        private void btnMin_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
     }
 }

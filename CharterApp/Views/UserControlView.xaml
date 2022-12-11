@@ -44,7 +44,6 @@
                     <Button Content="Draw"  Command="{Binding DrawCommand}" Height="50" Width="120" Margin="0 50 0 0"/>
                     <Button Content="Clear" Command="{Binding ClearCommand}" Height="50" Width="120" Margin="0 50 0 0"/>
                     <Button x:Name="ButtonCB" Click="ButtonCB_Click" Height="50" Width="120" Content="Change geometry" Margin="0 50 0 0"/>
-
                 </StackPanel>
 
 

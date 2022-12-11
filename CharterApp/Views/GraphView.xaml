@@ -20,7 +20,8 @@
         <!-- graph -->
         <StackPanel Grid.Row="1">
             <Border BorderThickness="1" BorderBrush="Black" CornerRadius="5" Padding="5" Height="Auto" Background="AliceBlue" Margin="50">
-                <WpfPlot Content="{Binding DataPlot}" Height="700" Width="1200" Margin="15" Padding="10" />
+                <WpfPlot x:Name="Graph" Content="{Binding DataPlot}" Height="700" Width="1200" Margin="15" Padding="10"  Cursor="Hand"/>
+
             </Border>
         </StackPanel>
     </Grid>

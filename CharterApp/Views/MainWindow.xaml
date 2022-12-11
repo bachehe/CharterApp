@@ -11,9 +11,6 @@
         Height="900" Width="1600"   
         >
 
-    <!--WindowState="Maximized"
-        WindowStyle="None"-->
-
     <Grid Background="#252c48">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

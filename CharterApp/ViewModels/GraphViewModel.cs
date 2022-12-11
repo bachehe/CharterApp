@@ -28,9 +28,9 @@ namespace CharterApp.ViewModels
                 xvalues[x] = x;
                 yvalues[x] = geometry.ZFunction(x);
             }
-            
+
             //graph data implementation
-            DataPlot.Plot.AddScatter(xvalues, yvalues, label: $"value");
+            DataPlot.Plot.AddScatter(xvalues, yvalues, label: $"{String.Join(",", geometry.Parameters.Select(x => $"{x.Name}:{x.Value}"))}", markerShape: MarkerShape.none );
 
             //graph style
             DataPlot.BorderBrush = new SolidColorBrush(Colors.White);
@@ -38,15 +38,20 @@ namespace CharterApp.ViewModels
 
             //graph description
             DataPlot.Plot.Legend();
-            DataPlot.Plot.Title("CHART");
+            DataPlot.Plot.Title($"Chart for: {geometry.Name}");
             DataPlot.Plot.XLabel("Angle");
             DataPlot.Plot.YLabel("EGW");
+
+            //graph funcionality
+            DataPlot.Plot.AxisAuto();
+            DataPlot.Plot.SaveFig("scatter_markers.png", 800, 1200);
 
             DataPlot.Refresh();
         }
         public void Clear()
         {
             DataPlot.Plot.Clear();
+            DataPlot.Refresh();
         }
     }
 }

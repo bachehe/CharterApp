@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Media.Media3D;
 using CharterApp.Models;
 using ScottPlot;
 using ScottPlot.WPF;
@@ -16,6 +17,15 @@ namespace CharterApp.ViewModels
         public GraphViewModel()
         {
             DataPlot = new();
+        }
+
+        public void SelectGeometryType(IGeometryType geometryType)
+        {
+            //graph description
+            DataPlot.Plot.Legend();
+            DataPlot.Plot.Title($"Chart for: {geometryType.GeometryName}");
+            DataPlot.Plot.XLabel("Angle");
+            DataPlot.Plot.YLabel("EGW");
         }
         
         public void Draw(IGeometry geometry)
@@ -30,21 +40,15 @@ namespace CharterApp.ViewModels
             }
 
             //graph data implementation
-            DataPlot.Plot.AddScatter(xvalues, yvalues, label: $"{String.Join(",", geometry.Parameters.Select(x => $"{x.Name}:{x.Value}"))}", markerShape: MarkerShape.none );
+            DataPlot.Plot.AddScatter(xvalues, yvalues, label: geometry.LegendLabel, markerShape: MarkerShape.none );
 
             //graph style
             DataPlot.BorderBrush = new SolidColorBrush(Colors.White);
-            DataPlot.Plot.Style(ScottPlot.Style.Blue2);
-
-            //graph description
-            DataPlot.Plot.Legend();
-            DataPlot.Plot.Title($"Chart for: {geometry.Name}");
-            DataPlot.Plot.XLabel("Angle");
-            DataPlot.Plot.YLabel("EGW");
+            DataPlot.Plot.Style(Style.Blue2);
 
             //graph funcionality
             DataPlot.Plot.AxisAuto();
-            DataPlot.Plot.SaveFig("scatter_markers.png", 800, 1200);
+            //DataPlot.Plot.SaveFig("scatter_markers.png", 800, 1200);
 
             DataPlot.Refresh();
         }

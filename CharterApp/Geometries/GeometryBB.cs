@@ -9,7 +9,7 @@ namespace CharterApp.Models
      
         public List<IParametr> Parameters => new() { _linearFactor };
 
-        public string Name => "BB";
+        public string LegendLabel => $"{_linearFactor.Name}: {_linearFactor.Value}";
 
         public GeometryBB()
         {

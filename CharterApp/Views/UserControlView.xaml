@@ -4,10 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CharterApp.Views"
+             xmlns:vm="clr-namespace:CharterApp.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="userControl">
     <Grid>
-        
+
         <Border Margin ="25 50 0 50"  
                 BorderThickness="1" 
                 BorderBrush="Black" 
@@ -16,34 +19,43 @@
 
             <StackPanel Width="185" Height="720">
                 <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Geometry"/>
-                <ComboBox x:Name="GeometryCB"
-                          SelectionChanged="GeometryCB_SelectionChanged"
-                          ItemsSource="{Binding Geometries}" 
-                          SelectedValue="{Binding SelectedGeometry}" 
+                <ComboBox ItemsSource="{Binding GeometryTypes}" 
+                          SelectedValue="{Binding SelectedGeometryType}" 
                           IsEnabled="True"
-                          DisplayMemberPath="Name"
+                          DisplayMemberPath="GeometryName"
                           HorizontalAlignment="Center" 
                           Width="150" FontSize="20" 
                           Margin="0 10 0 50"/>
-                
-                <Border BorderThickness="1" BorderBrush="Black"  Padding="25" Height="Auto">
-                    <ItemsControl FontSize="18" ItemsSource="{Binding SelectedGeometry.Parameters}" HorizontalAlignment="Center">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
+
+                <ItemsControl ItemsSource="{Binding Geometries}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1" BorderBrush="Black"  Padding="25" Height="Auto">
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Name}" Margin="0 10 0 0"/>
-                                    <TextBox Text="{Binding Value}" Width="120" Margin="0 10 0 0"/>
+                                    <ItemsControl FontSize="18" ItemsSource="{Binding Parameters}" HorizontalAlignment="Center">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Name}" Margin="0 10 0 0"/>
+                                                    <TextBox Text="{Binding Value}" Width="120" Margin="0 10 0 0"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                    <Button Content="-"
+                                            Command="{Binding ElementName=userControl, Path=DataContext.RemoveGeometryCommand}"
+                                            CommandParameter="{Binding}"/>
                                 </StackPanel>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </Border>
-                
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
 
                 <StackPanel>
+                    <Button Content="Add"  Command="{Binding AddGeometryCommand}" Height="50" Width="120" Margin="0 50 0 0"/>
                     <Button Content="Draw"  Command="{Binding DrawCommand}" Height="50" Width="120" Margin="0 50 0 0"/>
                     <Button Content="Clear" Command="{Binding ClearCommand}" Height="50" Width="120" Margin="0 50 0 0"/>
-                    <Button x:Name="ButtonCB" Click="ButtonCB_Click" Height="50" Width="120" Content="Change geometry" Margin="0 50 0 0"/>
                 </StackPanel>
 
 

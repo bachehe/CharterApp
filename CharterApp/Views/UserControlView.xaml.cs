@@ -24,13 +24,5 @@ namespace CharterApp.Views
         {
             InitializeComponent();
         }
-        private void GeometryCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            GeometryCB.IsEnabled = false;
-        }
-        private void ButtonCB_Click(object sender, RoutedEventArgs e)
-        {
-            GeometryCB.IsEnabled = true;
-        }
     }
 }

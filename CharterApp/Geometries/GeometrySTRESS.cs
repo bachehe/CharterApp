@@ -10,7 +10,7 @@ namespace CharterApp.Models
     {
         private readonly LinearFactor _linearFactor;
         public List<IParametr> Parameters => new() { _linearFactor };
-        public string Name => "STRESS";
+        public string LegendLabel => $"{_linearFactor.Name}: {_linearFactor.Value}";
         public GeometrySTRESS()
         {
             _linearFactor = new();

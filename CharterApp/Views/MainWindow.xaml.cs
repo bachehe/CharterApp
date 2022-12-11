@@ -21,8 +21,7 @@ namespace CharterApp
 
         public MainWindow()
         {
-            this.WindowStyle = WindowStyle.None;
-            
+            this.WindowStyle = WindowStyle.None;         
 
             DataContext = new MainWindowViewModel();    
             InitializeComponent();

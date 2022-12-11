@@ -69,8 +69,7 @@ namespace CharterApp.ViewModels
         private void OnClickMinimizeCommand(object? obj)
         {
             Window window = Application.Current.MainWindow;
-            window.WindowState = WindowState.Minimized;
-           
+            window.WindowState = WindowState.Minimized;       
         }
         private void OnClickExitCommand(object? obj)
         {

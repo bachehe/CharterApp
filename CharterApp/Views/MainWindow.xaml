@@ -35,13 +35,8 @@
 
         <!-- Menu -->
         <DockPanel Grid.ColumnSpan="2" Grid.Row="1">
-
             <Menu DockPanel.Dock="Top" FontSize="15">
-                <MenuItem Header="_File">
-                    <MenuItem Header="_New" />
-                    <MenuItem Header="_Open" />
-                    <MenuItem Header="_Save" />
-                    <Separator />
+                <MenuItem Header="_App">
                     <MenuItem Header="_Help"  Command="{Binding MenuHelpCommand}"/>
                     <MenuItem Header="_Info"  Command="{Binding MenuInfoCommand}"/>
                 </MenuItem>

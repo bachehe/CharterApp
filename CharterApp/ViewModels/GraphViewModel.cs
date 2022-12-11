@@ -21,10 +21,9 @@ namespace CharterApp.ViewModels
 
         public void SelectGeometryType(IGeometryType geometryType)
         {
-            //graph description
             DataPlot.Plot.Legend();
-            DataPlot.Plot.Title($"Chart for: {geometryType.GeometryName}");
-            DataPlot.Plot.XLabel("Angle");
+            DataPlot.Plot.Title($"Graph of {geometryType.GeometryName} Geometry Type");
+            DataPlot.Plot.XLabel("θ");
             DataPlot.Plot.YLabel("EGW");
         }
         

@@ -8,22 +8,33 @@
         xmlns:vm="clr-namespace:CharterApp.ViewModels"
         d:DataContext ="{d:DesignInstance vm:MainWindowViewModel}"
         Title="MainWindow" 
-        Height="900" Width="1600"   
+        Width="1348"  
+        Height="924" WindowStartupLocation="CenterScreen"
         >
 
     <Grid Background="#252c48">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
+        <!-- taskbar -->
+        <Grid  Grid.ColumnSpan="2" Background="DarkGray" >
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="CharterApp 1.0" Margin="0 0 1200 0"/>
+                <Button Width="25" Content="-"  Command="{Binding MinimizeCommand}"/>
+                <Button Width="25" Content="x"  Command="{Binding ExitCommand}"/>
+            </StackPanel>
+        </Grid>
+
+
         <!-- Menu -->
-        <DockPanel Grid.ColumnSpan="2" Grid.Row="0">
+        <DockPanel Grid.ColumnSpan="2" Grid.Row="1">
 
             <Menu DockPanel.Dock="Top" FontSize="15">
                 <MenuItem Header="_File">
@@ -31,7 +42,8 @@
                     <MenuItem Header="_Open" />
                     <MenuItem Header="_Save" />
                     <Separator />
-                    <MenuItem Header="_Info" />
+                    <MenuItem Header="_Help"  Command="{Binding MenuHelpCommand}"/>
+                    <MenuItem Header="_Info"  Command="{Binding MenuInfoCommand}"/>
                 </MenuItem>
                 <MenuItem Header="_Variable">
                     <MenuItem Header="_Calculate" />
@@ -40,21 +52,17 @@
                     <MenuItem Header="_Info" />
                 </MenuItem>
             </Menu>
-
-
-
         </DockPanel>
 
-
         <!-- Left Bar -->
-        <StackPanel Grid.Row="1" Grid.Column="0">
+        <StackPanel Grid.Row="2" Grid.Column="0">
             <views:UserControlView/>
 
         </StackPanel>
 
         <!-- Graph View -->
         <StackPanel Grid.Row="2" Grid.Column="1" DataContext="{Binding GraphViewModel}">
-            <views:GraphView />
+            <views:GraphView/>
         </StackPanel>
 
     </Grid>

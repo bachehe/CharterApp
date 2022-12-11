@@ -2,7 +2,7 @@
 {
     public class LinearFactor : IParametr
     {
-        public string Name => "Linear Factor";
+        public string Name => "μ value";
         public string Unit => "";
         public double Value { get; set; }
 

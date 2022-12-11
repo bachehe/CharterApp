@@ -21,9 +21,11 @@ namespace CharterApp
 
         public MainWindow()
         {
+            this.WindowStyle = WindowStyle.None;
+            
+
             DataContext = new MainWindowViewModel();    
             InitializeComponent();
-            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
 
     }

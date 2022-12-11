@@ -2,7 +2,7 @@
 {
     public class AngleFactor : IParametr
     {
-        public string Name => "Angle";
+        public string Name => "θ value";
 
         public string Unit => "°";
 

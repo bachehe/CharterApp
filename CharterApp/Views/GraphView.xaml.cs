@@ -23,28 +23,7 @@ namespace CharterApp.Views
         public GraphView()
         {
             InitializeComponent();
-
             Graph.RightClicked -= Graph.DefaultRightClickEvent;
-            Graph.RightClicked += CustomRightClickEvent!;
-        }
-        private void CustomRightClickEvent(object sender, EventArgs e)
-        {
-
-            MenuItem menuHelp = new MenuItem
-            {
-                Header = "Help"
-            };
-            menuHelp.Click += RightClickMenu_Help_Click;
-
-            ContextMenu menu = new ContextMenu();
-            
-            menu.Items.Add(menuHelp);
-            menu.IsOpen = true;
-
-        }
-        private void RightClickMenu_Help_Click(object sender, EventArgs e)
-        {
-            new HelpWindow().Show();
         }
     }
 }

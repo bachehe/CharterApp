@@ -7,55 +7,55 @@
              xmlns:vm="clr-namespace:CharterApp.ViewModels"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
-             d:DesignHeight="450" d:DesignWidth="800"
              x:Name="userControl">
     <Grid>
 
         <Border Margin ="25 50 0 50"  
                 BorderThickness="1" 
                 BorderBrush="Black" 
-                CornerRadius="5" Padding="10" Width="250"
+                CornerRadius="5" Padding="10" Width="150"
                 Height="Auto" Background="AliceBlue" >
 
-            <StackPanel Width="185" Height="720">
+            <StackPanel>
                 <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Geometry"/>
                 <ComboBox ItemsSource="{Binding GeometryTypes}" 
                           SelectedValue="{Binding SelectedGeometryType}" 
                           IsEnabled="True"
                           DisplayMemberPath="GeometryName"
                           HorizontalAlignment="Center" 
-                          Width="150" FontSize="20" 
-                          Margin="0 10 0 50"/>
-
-                <ItemsControl ItemsSource="{Binding Geometries}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Border BorderThickness="1" BorderBrush="Black"  Padding="25" Height="Auto">
+                          Width="120" FontSize="16" 
+                          Margin="0 10 0 20"/>
+                <Border BorderThickness="1" BorderBrush="Black" Padding="10" Height="Auto">
+                    <ItemsControl ItemsSource="{Binding Geometries}" Width="100">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
                                 <StackPanel>
-                                    <ItemsControl FontSize="18" ItemsSource="{Binding Parameters}" HorizontalAlignment="Center">
+                                    <ItemsControl FontSize="15" ItemsSource="{Binding Parameters}" HorizontalAlignment="Center" Width="75">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <StackPanel>
-                                                    <TextBlock Text="{Binding Name}" Margin="0 10 0 0"/>
-                                                    <TextBox Text="{Binding Value}" Width="120" Margin="0 10 0 0"/>
+                                                <StackPanel> 
+                                                    <TextBlock Text="{Binding Name}"/>
+                                                    <TextBox Text="{Binding Value}"/>
                                                 </StackPanel>
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
                                     <Button Content="-"
                                             Command="{Binding ElementName=userControl, Path=DataContext.RemoveGeometryCommand}"
-                                            CommandParameter="{Binding}"/>
+                                            CommandParameter="{Binding}"
+                                            Width="30" Margin="0 5 12 10" HorizontalAlignment="Right"/>
                                 </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
 
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
 
-                <StackPanel>
-                    <Button Content="Add"  Command="{Binding AddGeometryCommand}" Height="50" Width="120" Margin="0 50 0 0"/>
-                    <Button Content="Draw"  Command="{Binding DrawCommand}" Height="50" Width="120" Margin="0 50 0 0"/>
-                    <Button Content="Clear" Command="{Binding ClearCommand}" Height="50" Width="120" Margin="0 50 0 0"/>
+                    </ItemsControl>
+                </Border>
+
+                <StackPanel Width="100" Margin="0 25 0 0">
+                    <Button Content="Add"  Command="{Binding AddGeometryCommand}" Height="30" Margin="0 20 0 0"/>
+                    <Button Content="Draw"  Command="{Binding DrawCommand}" Height="30" Margin="0 20 0 0"/>
+                    <Button Content="Clear" Command="{Binding ClearCommand}" Height="30" Margin="0 25 0 0"/>
                 </StackPanel>
 
 

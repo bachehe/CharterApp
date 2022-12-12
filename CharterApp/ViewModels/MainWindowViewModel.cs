@@ -10,7 +10,11 @@ using System.Windows.Controls;
 
 namespace CharterApp.ViewModels
 {
-    public class MainWindowViewModel
+    public interface IMainWindowViewModel
+    {
+
+    }
+    public class MainWindowViewModel : IMainWindowViewModel
     {
         private readonly int _maxGeometryCount = 4;
         private MenuViewModel MenuViewModel = new();

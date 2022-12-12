@@ -8,7 +8,12 @@ using System.Windows.Controls;
 
 namespace CharterApp.ViewModels
 {
-    public class MenuViewModel
+    public interface IMenuViewModel
+    {
+        void Help();
+        void Info();
+    }
+    public class MenuViewModel : IMenuViewModel
     {
         public void Help()
         {

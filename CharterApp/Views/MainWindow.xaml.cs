@@ -19,11 +19,12 @@ namespace CharterApp
     public partial class MainWindow : Window
     {
 
-        public MainWindow()
+        public MainWindow(IMainWindowViewModel mainWindowViewModel)
         {
             this.WindowStyle = WindowStyle.None;         
 
-            DataContext = new MainWindowViewModel();    
+            //DataContext = new MainWindowViewModel();    
+            DataContext = mainWindowViewModel;
             InitializeComponent();
         }
 

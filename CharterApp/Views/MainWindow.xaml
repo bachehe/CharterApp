@@ -9,8 +9,7 @@
         d:DataContext ="{d:DesignInstance vm:MainWindowViewModel}"
         Title="MainWindow" 
         Width="1348"  
-        Height="924" WindowStartupLocation="CenterScreen"
-        >
+        Height="924" WindowStartupLocation="CenterScreen">
 
     <Grid Background="#252c48">
         <Grid.RowDefinitions>

@@ -11,7 +11,13 @@ using ScottPlot.WPF;
 
 namespace CharterApp.ViewModels
 {
-    public class GraphViewModel
+    public interface IGraphViewModel
+    {
+        void SelectGeometryType(IGeometryType geometryType);
+        void Draw(IGeometry geometry);
+        void Clear();
+    }
+    public class GraphViewModel : IGraphViewModel
     {
         public ScottPlot.WpfPlot DataPlot { get; }
         public GraphViewModel()

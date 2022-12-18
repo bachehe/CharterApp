@@ -1,8 +1,6 @@
-﻿using System;
+﻿using CharterApp.Lamps;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CharterApp.Models
 {
@@ -11,7 +9,10 @@ namespace CharterApp.Models
         private readonly LinearFactor _linearFactor;
         private readonly AngleFactor _angleFactor;
         public List<IParametr> Parameters => new() { _linearFactor, _angleFactor };
-        public string LegendLabel => $"{_linearFactor.Name}: {_linearFactor.Value}, {_angleFactor.Name}: {_angleFactor.Value}";
+        public string LegendLabel => $"{Lamp.LampName}, {_linearFactor.Name}: {_linearFactor.Value}, {_angleFactor.Name}: {_angleFactor.Value}";
+
+        public Lamp Lamp { get; set; }
+
         public GeometrySTRESS()
         {
             _linearFactor = new();

@@ -28,7 +28,7 @@ namespace CharterApp.ViewModels
         public void SelectGeometryType(IGeometryType geometryType)
         {
             DataPlot.Plot.Legend();
-            DataPlot.Plot.Title($"{geometryType.GeometryName} Graph with lamp Lamp");
+            DataPlot.Plot.Title($"{geometryType.GeometryName}");
             DataPlot.Plot.XLabel("Angle");
             DataPlot.Plot.YLabel("EGW [μm]");
         }

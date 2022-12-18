@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharterApp.Lamps;
+using System;
 using System.Collections.Generic;
 
 namespace CharterApp.Models
@@ -9,7 +10,9 @@ namespace CharterApp.Models
      
         public List<IParametr> Parameters => new() { _linearFactor };
 
-        public string LegendLabel => $"{_linearFactor.Name}: {_linearFactor.Value}";
+        public string LegendLabel => $"{Lamp.LampName}, {_linearFactor.Name}: {_linearFactor.Value}";
+
+        public Lamp Lamp { get; set; }
 
         public GeometryBB()
         {

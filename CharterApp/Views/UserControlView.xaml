@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CharterApp.Views"
              xmlns:vm="clr-namespace:CharterApp.ViewModels"
+             xmlns:lamps="clr-namespace:CharterApp.Lamps"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
              x:Name="userControl">
@@ -25,15 +26,19 @@
                           HorizontalAlignment="Center" 
                           Width="120" FontSize="16" 
                           Margin="0 10 0 20"/>
+
                 <Border BorderThickness="1" BorderBrush="Black" Padding="10" Height="Auto">
                     <ItemsControl ItemsSource="{Binding Geometries}" Width="100">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
+                                    <ComboBox ItemsSource="{x:Static lamps:Lamp.Lamps}"
+                                              SelectedItem="{Binding Lamp}"
+                                              DisplayMemberPath="LampName"/>
                                     <ItemsControl FontSize="15" ItemsSource="{Binding Parameters}" HorizontalAlignment="Center" Width="75">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <StackPanel> 
+                                                <StackPanel>
                                                     <TextBlock Text="{Binding Name}"/>
                                                     <TextBox Text="{Binding Value}"/>
                                                 </StackPanel>
@@ -48,7 +53,6 @@
 
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
-
                     </ItemsControl>
                 </Border>
 

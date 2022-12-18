@@ -2,8 +2,8 @@
 {
     public class LinearFactor : IParametr
     {
-        public string Name => "μ value";
-        public string Unit => "";
+        public string Unit => "[μm]";
+        public string Name => $"μ {Unit}";
         public double Value { get; set; }
 
         public bool Validate()

@@ -28,9 +28,9 @@ namespace CharterApp.ViewModels
         public void SelectGeometryType(IGeometryType geometryType)
         {
             DataPlot.Plot.Legend();
-            DataPlot.Plot.Title($"Graph of {geometryType.GeometryName} Geometry Type");
-            DataPlot.Plot.XLabel("θ");
-            DataPlot.Plot.YLabel("EGW");
+            DataPlot.Plot.Title($"{geometryType.GeometryName} Graph with lamp Lamp");
+            DataPlot.Plot.XLabel("Angle");
+            DataPlot.Plot.YLabel("EGW [μm]");
         }
         
         public void Draw(IGeometry geometry)
@@ -49,7 +49,6 @@ namespace CharterApp.ViewModels
 
             //graph style
             DataPlot.BorderBrush = new SolidColorBrush(Colors.White);
-            DataPlot.Plot.Style(Style.Blue2);
 
             //graph funcionality
             DataPlot.Plot.AxisAuto();

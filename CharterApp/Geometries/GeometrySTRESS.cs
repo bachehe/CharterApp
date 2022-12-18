@@ -9,16 +9,18 @@ namespace CharterApp.Models
     public class GeometrySTRESS : IGeometry
     {
         private readonly LinearFactor _linearFactor;
-        public List<IParametr> Parameters => new() { _linearFactor };
-        public string LegendLabel => $"{_linearFactor.Name}: {_linearFactor.Value}";
+        private readonly AngleFactor _angleFactor;
+        public List<IParametr> Parameters => new() { _linearFactor, _angleFactor };
+        public string LegendLabel => $"{_linearFactor.Name}: {_linearFactor.Value}, {_angleFactor.Name}: {_angleFactor.Value}";
         public GeometrySTRESS()
         {
             _linearFactor = new();
+            _angleFactor = new ();
         }
 
         public double ZFunction(double x)
         {
-            double sinValue = 42.5;
+            double sinValue = _angleFactor.Value;
             double variable = _linearFactor.Value;
 
             var upper = Math.Log(0.05) * -1;

@@ -2,9 +2,8 @@
 {
     public class AngleFactor : IParametr
     {
-        public string Name => "θ value";
-
-        public string Unit => "°";
+        public string Unit => "[°]";
+        public string Name => $"θ {Unit}"; // Ѱ for stress, θ for other
 
         public double Value { get; set; }
 

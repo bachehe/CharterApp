@@ -10,9 +10,6 @@ using System.Windows;
 
 namespace CharterApp
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         public App()

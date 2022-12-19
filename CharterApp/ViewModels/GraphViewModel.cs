@@ -19,20 +19,32 @@ namespace CharterApp.ViewModels
     }
     public class GraphViewModel : IGraphViewModel
     {
+        public double x { get; set; }
         public ScottPlot.WpfPlot DataPlot { get; }
+        //private readonly ScottPlot.Plottable.ScatterPlot MyScatterPlot;
+        public string Cords { get; set; }
         public GraphViewModel()
         {
             DataPlot = new();
+            Cords = string.Empty;
         }
 
+        //public void OnMouseMoved()
+        //{
+        //    (double x, double y) = DataPlot.GetMouseCoordinates();
+        //    double xyRatio = DataPlot.Plot.XAxis.Dims.PxPerUnit / DataPlot.Plot.YAxis.Dims.PxPerUnit;
+        //    (double pointX, double pointY, int pointIndex) = MyScatterPlot.GetPointNearest(x, y, xyRatio);
+        //    Cords = $"coordinates: x {pointX}, y {pointY}";
+        //}
         public void SelectGeometryType(IGeometryType geometryType)
         {
+
             DataPlot.Plot.Legend();
             DataPlot.Plot.Title($"{geometryType.GeometryName}");
             DataPlot.Plot.XLabel("Angle");
             DataPlot.Plot.YLabel("EGW [μm]");
         }
-        
+
         public void Draw(IGeometry geometry)
         {
             var xvalues = new double[91];
@@ -45,14 +57,13 @@ namespace CharterApp.ViewModels
             }
 
             //graph data implementation
-            DataPlot.Plot.AddScatter(xvalues, yvalues, label: geometry.LegendLabel, markerShape: MarkerShape.none );
+            DataPlot.Plot.AddScatter(xvalues, yvalues, label: geometry.LegendLabel, markerShape: MarkerShape.none);
 
             //graph style
             DataPlot.BorderBrush = new SolidColorBrush(Colors.White);
 
             //graph funcionality
             DataPlot.Plot.AxisAuto();
-            //DataPlot.Plot.SaveFig("scatter_markers.png", 800, 1200);
 
             DataPlot.Refresh();
         }

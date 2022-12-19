@@ -1,4 +1,5 @@
 ﻿using CharterApp.Models;
+using CharterApp.Lamps;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using CharterApp.Views;
 
 namespace CharterApp.ViewModels
 {
@@ -19,6 +21,7 @@ namespace CharterApp.ViewModels
         private readonly int _maxGeometryCount = 4;
         private MenuViewModel MenuViewModel = new();
         private IGeometryType? _selectedGeometryType;
+
         public List<IGeometryType> GeometryTypes { get; }
         public IGeometryType? SelectedGeometryType
         {
@@ -37,8 +40,9 @@ namespace CharterApp.ViewModels
                 DrawCommand.UpdateCanExecute();
             }
         }
-
+        public DelegateCommand CalculateAbsorbtion { get; }
         public ObservableCollection<IGeometry> Geometries { get; }
+        public DelegateCommand CalculateAbsortpionWindow { get; }
         public DelegateCommand ExitCommand { get; }
         public DelegateCommand MinimizeCommand { get; }
         public DelegateCommand MenuHelpCommand { get; }
@@ -57,7 +61,8 @@ namespace CharterApp.ViewModels
                 new GeometryType<GeometrySKP>("SKP"),
                 new GeometryType<GeometrySTRESS>("STRESS"),
             };
-
+            CalculateAbsorbtion = new(OnClickCalculateAbsorption);
+            CalculateAbsortpionWindow = new(OnClickOpenAbsorption);
             Geometries = new();
             MinimizeCommand = new(OnClickMinimizeCommand);
             ExitCommand = new(OnClickExitCommand);
@@ -69,6 +74,16 @@ namespace CharterApp.ViewModels
             ClearCommand = new(OnClearExecute);
             GraphViewModel = new();
 
+        }
+        private void OnClickCalculateAbsorption(object? obj)
+        {
+            CalculateAbsorptionViewModel view = new();
+            view.Absorption();
+        }
+        private void OnClickOpenAbsorption(object? obj)
+        {
+            CalculateAbsorptionView view = new();
+            view.Show();
         }
         private void OnClickMinimizeCommand(object? obj)
         {

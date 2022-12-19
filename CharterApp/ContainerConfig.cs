@@ -24,6 +24,7 @@ namespace CharterApp
             builder.RegisterType<AngleFactor>().As<IParametr>();
             builder.RegisterType<LinearFactor>().As<IParametr>();
 
+            builder.RegisterType<CalculateAbsorptionViewModel>().As<ICalculateAbsorptionViewModel>();
             builder.RegisterType<GraphViewModel>().As<IGraphViewModel>();
             builder.RegisterType<MenuViewModel>().As<IMenuViewModel>();
             builder.RegisterType<MainWindowViewModel>().As<MainWindowViewModel>();

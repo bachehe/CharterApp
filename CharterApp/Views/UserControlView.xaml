@@ -32,14 +32,16 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
+                                    <TextBlock FontSize="15" Text="Lamp" HorizontalAlignment="Center" Width="75"/>
                                     <ComboBox ItemsSource="{x:Static lamps:Lamp.Lamps}"
                                               SelectedItem="{Binding Lamp}"
-                                              DisplayMemberPath="LampName"/>
+                                              DisplayMemberPath="LampName"
+                                              HorizontalAlignment="Center" Width="75"/>
                                     <ItemsControl FontSize="15" ItemsSource="{Binding Parameters}" HorizontalAlignment="Center" Width="75">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <StackPanel>
-                                                    <TextBlock Text="{Binding Name}"/>
+                                                <StackPanel Margin="0 2 0 0">
+                                                    <TextBlock Text="{Binding Name, StringFormat=value {0}}"/>
                                                     <TextBox Text="{Binding Value}"/>
                                                 </StackPanel>
                                             </DataTemplate>
@@ -56,10 +58,10 @@
                     </ItemsControl>
                 </Border>
 
-                <StackPanel Width="100" Margin="0 25 0 0">
-                    <Button Content="Add"  Command="{Binding AddGeometryCommand}" Height="30" Margin="0 20 0 0"/>
-                    <Button Content="Draw"  Command="{Binding DrawCommand}" Height="30" Margin="0 20 0 0"/>
-                    <Button Content="Clear" Command="{Binding ClearCommand}" Height="30" Margin="0 25 0 0"/>
+                <StackPanel Width="100" >
+                    <Button Content="Add"  Command="{Binding AddGeometryCommand}" Height="30" Margin="0 10 0 0"/>
+                    <Button Content="Draw"  Command="{Binding DrawCommand}" Height="30" Margin="0 10 0 0"/>
+                    <Button Content="Clear" Command="{Binding ClearCommand}" Height="30" Margin="0 10 0 0"/>
                 </StackPanel>
 
 

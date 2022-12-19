@@ -10,7 +10,7 @@ namespace CharterApp.Models
         private readonly AngleFactor _angleFactor;
 
         public List<IParametr> Parameters => new() { _linearFactor, _angleFactor};
-        public string LegendLabel => $"{Lamp.LampName}, {_linearFactor.Name}: {_linearFactor.Value}, {_angleFactor.Name}: {_angleFactor.Value}";
+        public string LegendLabel => $"{Lamp.LampName}, {_linearFactor.Name}: {_linearFactor.Value}μm, {_angleFactor.Name}: {_angleFactor.Value}°";
 
         public Lamp Lamp { get; set; }
 

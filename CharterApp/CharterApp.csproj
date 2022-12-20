@@ -14,4 +14,10 @@
     <PackageReference Include="ScottPlot.WPF" Version="4.1.59" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\basecsv.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

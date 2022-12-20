@@ -10,57 +10,35 @@ namespace CharterApp.ViewModels
 {
     public interface ICalculateAbsorptionViewModel
     {
-        double Absorption();
+        DelegateCommand CalculateCommand { get; }
     }
-    public class CalculateAbsorptionViewModel : ICalculateAbsorptionViewModel
+    public class CalculateAbsorptionViewModel : ICalculateAbsorptionViewModel, INotifyPropertyChanged
     {
-        private double _result;
-        public double Result
+        public double Result { get; set; }
+
+        public double ValueJo { get; set; }
+        public double ValueJx { get; set; }
+        public double LinearFactor { get; set; }
+
+        public DelegateCommand CalculateCommand { get; }
+
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public CalculateAbsorptionViewModel()
         {
-            get { return _result; }
-            set { _result = value; }
-        }
-        private double _valueJo;
-        public double ValueJo
-        {
-            get { return _valueJo; }
-            set 
-            { 
-                _valueJo = value;
-                OnPropertyChanged(nameof(ValueJo));
-            }
-        }
-        private double _valueJx;
-        public double ValueJx
-        {
-            get { return _valueJx; }
-            set
-            {
-                _valueJx = value;
-                OnPropertyChanged(nameof(ValueJx));
-            }
-        }
-        private double _linearFactor;
-        public double LinearFactor
-        {
-            get { return _linearFactor; }
-            set
-            {
-                _linearFactor = value;
-                OnPropertyChanged(nameof(LinearFactor));
-            }
+            CalculateCommand = new(CalculateAbsorption);
         }
 
-        public double Absorption()
+        private void CalculateAbsorption(object? obj)
         {
-            _result = Math.Log(_valueJo / _valueJx) / (_linearFactor * -1);
-            return _result;
+            Result = Math.Log(ValueJo / ValueJx) / (-LinearFactor);
+            OnPropertyChanged(nameof(Result));
         }
-        public event PropertyChangedEventHandler? PropertyChanged;
+        
         private void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new(propertyName));
         }
     }
 }

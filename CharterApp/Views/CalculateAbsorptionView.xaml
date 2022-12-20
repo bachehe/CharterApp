@@ -21,9 +21,9 @@
                 <TextBox FontSize="20" Text="{Binding LinearFactor}" Margin="10 0 0 0" Width="100" HorizontalAlignment="Left"/>
             </StackPanel>
 
-            <Button FontSize="20" Content="Calculate" Width="100" />
+            <Button FontSize="20" Command="{Binding CalculateCommand}" Content="Calculate" Width="100" />
             <TextBlock FontSize="20" Text="x[mm]" Margin="0 10 0 0" Width="100" HorizontalAlignment="Left"/>
-            <TextBlock FontSize="20" Text="{Binding Result}" Margin="0 10 0 0" Width="100" HorizontalAlignment="Left"/>
+            <TextBox FontSize="20" IsReadOnly="True" Text="{Binding Result}" Margin="0 10 0 0" Width="100" HorizontalAlignment="Left"/>
         </StackPanel>
     </Grid>
 </Window>

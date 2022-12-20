@@ -22,6 +22,7 @@ namespace CharterApp.Views
     {
         public CalculateAbsorptionView()
         {
+            DataContext = new CalculateAbsorptionViewModel();
             InitializeComponent();
         }
     }

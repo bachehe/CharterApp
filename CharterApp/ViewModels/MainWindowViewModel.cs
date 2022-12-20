@@ -40,7 +40,6 @@ namespace CharterApp.ViewModels
                 DrawCommand.UpdateCanExecute();
             }
         }
-        public DelegateCommand CalculateAbsorbtion { get; }
         public ObservableCollection<IGeometry> Geometries { get; }
         public DelegateCommand CalculateAbsortpionWindow { get; }
         public DelegateCommand ExitCommand { get; }
@@ -61,7 +60,6 @@ namespace CharterApp.ViewModels
                 new GeometryType<GeometrySKP>("SKP"),
                 new GeometryType<GeometrySTRESS>("STRESS"),
             };
-            CalculateAbsorbtion = new(OnClickCalculateAbsorption);
             CalculateAbsortpionWindow = new(OnClickOpenAbsorption);
             Geometries = new();
             MinimizeCommand = new(OnClickMinimizeCommand);
@@ -75,11 +73,7 @@ namespace CharterApp.ViewModels
             GraphViewModel = new();
 
         }
-        private void OnClickCalculateAbsorption(object? obj)
-        {
-            CalculateAbsorptionViewModel view = new();
-            view.Absorption();
-        }
+
         private void OnClickOpenAbsorption(object? obj)
         {
             CalculateAbsorptionView view = new();

@@ -37,7 +37,7 @@
                                     <ComboBox ItemsSource="{x:Static lamps:Lamp.Lamps}"
                                               SelectedItem="{Binding Lamp}" 
                                               DisplayMemberPath="LampName"
-                                              HorizontalAlignment="Center" Width="75"/>
+                                              HorizontalAlignment="Center" Width="75" Margin="0 0 0 5"/>
 
                                     <!--<ComboBox ItemsSource="{x:Static lamps:Lamp.Lamps}">
                                         <ComboBox.SelectedItem>
@@ -52,7 +52,7 @@
                                     <ItemsControl FontSize="15" ItemsSource="{Binding Parameters}" HorizontalAlignment="Center" Width="75">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <StackPanel Margin="0 2 0 0">
+                                                <StackPanel Margin="0 2 0 5">
                                                     <TextBlock Text="{Binding Name}"/>
                                                     <TextBox Text="{Binding Value}"/>
                                                 </StackPanel>

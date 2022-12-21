@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:CharterApp.ViewModels"
         d:DataContext ="{d:DesignInstance vm:MainWindowViewModel}"
-        Title="CharterApp 1.0" WindowState="Maximized"
+        Title="CharterApp 1.0" 
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
         >
-
+    <ScrollViewer>
+        
+    
     <Grid Background="#252c48">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -52,4 +54,5 @@
         </StackPanel>
 
     </Grid>
+    </ScrollViewer>
 </Window>

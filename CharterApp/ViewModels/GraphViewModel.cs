@@ -44,7 +44,7 @@ namespace CharterApp.ViewModels
                 xvalues[x] = x;
                 yvalues[x] = geometry.ZFunction(x);
 
-                if (double.IsInfinity(yvalues[x]))
+                if (double.IsInfinity(yvalues[x]) && double.IsNaN(yvalues[x]))
                     return;
             }
 

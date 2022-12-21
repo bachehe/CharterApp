@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CharterApp.Views"
+             xmlns:v="clr-namespace:CharterApp"
              xmlns:vm="clr-namespace:CharterApp.ViewModels"
              xmlns:lamps="clr-namespace:CharterApp.Lamps"
              mc:Ignorable="d" 
@@ -34,14 +35,25 @@
                                 <StackPanel>
                                     <TextBlock FontSize="15" Text="Lamp" HorizontalAlignment="Center" Width="75"/>
                                     <ComboBox ItemsSource="{x:Static lamps:Lamp.Lamps}"
-                                              SelectedItem="{Binding Lamp}"
+                                              SelectedItem="{Binding Lamp}" 
                                               DisplayMemberPath="LampName"
                                               HorizontalAlignment="Center" Width="75"/>
+
+                                    <!--<ComboBox ItemsSource="{x:Static lamps:Lamp.Lamps}">
+                                        <ComboBox.SelectedItem>
+                                            <Binding Path="Lamp">
+                                                <Binding.ValidationRules>
+                                                    <lamps:LampValidate ValidatesOnTargetUpdated="True"/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </ComboBox.SelectedItem>
+                                    </ComboBox>-->
+                                    
                                     <ItemsControl FontSize="15" ItemsSource="{Binding Parameters}" HorizontalAlignment="Center" Width="75">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel Margin="0 2 0 0">
-                                                    <TextBlock Text="{Binding Name, StringFormat=value {0}}"/>
+                                                    <TextBlock Text="{Binding Name}"/>
                                                     <TextBox Text="{Binding Value}"/>
                                                 </StackPanel>
                                             </DataTemplate>

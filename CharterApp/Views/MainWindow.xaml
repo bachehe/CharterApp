@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:CharterApp.ViewModels"
         d:DataContext ="{d:DesignInstance vm:MainWindowViewModel}"
-        Title="CharterApp 1.0"
+        Title="CharterApp 1.0" WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
         >
@@ -44,7 +44,6 @@
         <!-- Left Bar -->
         <StackPanel Grid.Row="1" Grid.Column="0">
             <views:UserControlView/>
-
         </StackPanel>
 
         <!-- Graph View -->

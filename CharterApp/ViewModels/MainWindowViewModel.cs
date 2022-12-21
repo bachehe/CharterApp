@@ -143,12 +143,11 @@ namespace CharterApp.ViewModels
 
             foreach (var g in Geometries)
             {
-                if (g.Parameters.Any(x => !x.Validate()))
+                if (g.Parameters.Any(x => !x.Validate()) && g.Lamp.LampName == null)
                 {
                     MessageBox.Show("No input for values was recorded", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
-                }
-                    
+                }           
 
                 GraphViewModel.Draw(g);
             }

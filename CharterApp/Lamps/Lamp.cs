@@ -20,7 +20,7 @@ namespace CharterApp.Lamps
         public LampEnum LampType { get; }
         public string LampName => LampType.ToString();
 
-        private Lamp(LampEnum lampType)
+        public Lamp(LampEnum lampType) //private
         {
             LampType = lampType;
         }

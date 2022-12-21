@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="CharterApp.Views.UserControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CharterApp.Views"
+             xmlns:v="clr-namespace:CharterApp"
+             xmlns:vm="clr-namespace:CharterApp.ViewModels"
+             xmlns:lamps="clr-namespace:CharterApp.Lamps"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
+             x:Name="userControl">
+    <Grid>
+
+        <Border Margin ="25 50 0 50"  
+                BorderThickness="1" 
+                BorderBrush="Black" 
+                CornerRadius="5" Padding="10" Width="150"
+                Height="Auto" Background="AliceBlue" >
+
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center" FontSize="20" Text="Geometry"/>
+                <ComboBox ItemsSource="{Binding GeometryTypes}" 
+                          SelectedValue="{Binding SelectedGeometryType}" 
+                          IsEnabled="True"
+                          DisplayMemberPath="GeometryName"
+                          HorizontalAlignment="Center" 
+                          Width="120" FontSize="16" 
+                          Margin="0 10 0 20"/>
+
+                <Border BorderThickness="1" BorderBrush="Black" Padding="10" Height="Auto">
+                    <ItemsControl ItemsSource="{Binding Geometries}" Width="100">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock FontSize="15" Text="Lamp" HorizontalAlignment="Center" Width="75"/>
+                                    <ComboBox ItemsSource="{x:Static lamps:Lamp.Lamps}"
+                                              SelectedItem="{Binding Lamp}" 
+                                              DisplayMemberPath="LampName"
+                                              HorizontalAlignment="Center" Width="75"/>
+
+                                    <!--<ComboBox ItemsSource="{x:Static lamps:Lamp.Lamps}">
+                                        <ComboBox.SelectedItem>
+                                            <Binding Path="Lamp">
+                                                <Binding.ValidationRules>
+                                                    <lamps:LampValidate ValidatesOnTargetUpdated="True"/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </ComboBox.SelectedItem>
+                                    </ComboBox>-->
+                                    
+                                    <ItemsControl FontSize="15" ItemsSource="{Binding Parameters}" HorizontalAlignment="Center" Width="75">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Margin="0 2 0 0">
+                                                    <TextBlock Text="{Binding Name}"/>
+                                                    <TextBox Text="{Binding Value}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                    <Button Content="-"
+                                            Command="{Binding ElementName=userControl, Path=DataContext.RemoveGeometryCommand}"
+                                            CommandParameter="{Binding}"
+                                            Width="30" Margin="0 5 12 10" HorizontalAlignment="Right"/>
+                                </StackPanel>
+
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Border>
+
+                <StackPanel Width="100" >
+                    <Button Content="Add"  Command="{Binding AddGeometryCommand}" Height="30" Margin="0 10 0 0"/>
+                    <Button Content="Draw"  Command="{Binding DrawCommand}" Height="30" Margin="0 10 0 0"/>
+                    <Button Content="Clear" Command="{Binding ClearCommand}" Height="30" Margin="0 10 0 0"/>
+                </StackPanel>
+
+
+            </StackPanel>
+        </Border>
+
+    </Grid>
+
+</UserControl>

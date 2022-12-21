@@ -16,16 +16,14 @@ using System.Windows.Shapes;
 
 namespace CharterApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            DataContext = new MainWindowViewModel();
 
+        public MainWindow(IMainWindowViewModel mainWindowViewModel)
+        {
+            DataContext = mainWindowViewModel;
             InitializeComponent();
         }
+
     }
 }

@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:CharterApp.Views"
              xmlns:vm="clr-namespace:CharterApp.ViewModels"
              mc:Ignorable="d" 
-             d:DataContext ="{d:DesignInstance vm:GraphViewModel}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DataContext ="{d:DesignInstance vm:GraphViewModel}">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -18,8 +18,13 @@
 
         <!-- graph -->
         <StackPanel Grid.Row="1">
-            <WpfPlot Content="{Binding DataPlot}" Height="850" Width="1200"/>
-
+            <Border BorderThickness="1" BorderBrush="Black" CornerRadius="5" Padding="5" Height="Auto" Background="AliceBlue" Margin="50">
+                <StackPanel>
+                    <!--<TextBlock Text="{Binding Cords}"/>-->
+                    <!--{Binding OnMouseMoved}-->
+                    <WpfPlot x:Name="Graph" Content="{Binding DataPlot}" Height="700" Width="1015" Margin="15" Padding="10"  Cursor="Hand"/>
+                </StackPanel>
+            </Border>
         </StackPanel>
     </Grid>
 </UserControl>

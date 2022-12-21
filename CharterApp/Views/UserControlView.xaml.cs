@@ -1,7 +1,4 @@
-﻿using CharterApp.ViewModels;
-using ScottPlot;
-using ScottPlot.WPF;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,12 +15,14 @@ using System.Windows.Shapes;
 
 namespace CharterApp.Views
 {
-    public partial class GraphView : UserControl
-    {  
-        public GraphView()
+    /// <summary>
+    /// Interaction logic for UserControlView.xaml
+    /// </summary>
+    public partial class UserControlView : UserControl
+    {
+        public UserControlView()
         {
             InitializeComponent();
-            Graph.RightClicked -= Graph.DefaultRightClickEvent;
         }
     }
 }

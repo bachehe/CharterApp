@@ -2,10 +2,10 @@
 {
     public class AngleFactor : IParametr
     {
-        public string Name => "Kąt padania";
-
-        public string Unit => "°";
-
+        public string Unit => "[°]";
+        public string Name => $"Angle {Unit}";
+        public string NamePsi => "Ѱ";
+        public string NameTetha => "θ";
         public double Value { get; set; }
 
         public bool Validate()

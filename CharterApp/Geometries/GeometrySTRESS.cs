@@ -1,32 +1,40 @@
-﻿using System;
+﻿using CharterApp.Lamps;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 
 namespace CharterApp.Models
 {
     public class GeometrySTRESS : IGeometry
     {
         private readonly LinearFactor _linearFactor;
-        public List<IParametr> Parameters => new() { _linearFactor };
-        public string Name => "STRESS";
+        private readonly AngleFactor _angleFactor;
+        private readonly PlaneValue _plane; 
+
+        private readonly LampEnum _lampEnum;
+        public Lamp Lamp { get; set; }
+        public List<IParametr> Parameters => new() { _linearFactor, _angleFactor, _plane };
+        public string LegendLabel => $"{Lamp.LampName}, {_linearFactor.Name}: {_linearFactor.Value}μm, {_angleFactor.NamePsi}: {_angleFactor.Value}, {{{_plane.Value}}}";
+
+
         public GeometrySTRESS()
         {
             _linearFactor = new();
+            _angleFactor = new();
+            _plane = new();
+            Lamp = new(_lampEnum);
         }
 
         public double ZFunction(double x)
         {
-            double result = 1;
-            double sinValue = 42.5;
-            for (int i = 1; i <= 90; i++)
-            {
-                var upper = Math.Log(0.05) * -1;
-                var lower = 2 * x;
-                var rad = Math.Sin((sinValue * Math.PI) / 180) * Math.Cos((i * Math.PI) / 180); //value 42.5 i think is also user input
-                result = ((upper / lower) * rad) * 10000;
-            }
+            if (_linearFactor.Value == 0 && _angleFactor.Value == 0)
+                return 0;
+        
+            var upper = Math.Log(0.05) * -1;
+            var lower = 2 * _linearFactor.Value;
+            var rad = Math.Sin((_angleFactor.Value * Math.PI) / 180) * Math.Cos((x * Math.PI) / 180);
+            var result = ((upper / lower) * rad) * 10000;
+
             return result;
         }
     }

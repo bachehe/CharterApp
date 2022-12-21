@@ -3,20 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Media3D;
 using CharterApp.Models;
 using ScottPlot;
 using ScottPlot.WPF;
 
 namespace CharterApp.ViewModels
 {
-    public class GraphViewModel
+    public interface IGraphViewModel
+    {
+        void SelectGeometryType(IGeometryType geometryType);
+        void Draw(IGeometry geometry);
+        void Clear();
+    }
+    public class GraphViewModel : IGraphViewModel
     {
         public ScottPlot.WpfPlot DataPlot { get; }
-
         public GraphViewModel()
         {
             DataPlot = new();
+        }
+
+        public void SelectGeometryType(IGeometryType geometryType)
+        {
+            DataPlot.Plot.Legend();
+            DataPlot.Plot.Title($"{geometryType.GeometryName}");
+            DataPlot.Plot.XLabel("Angle [°]");
+            DataPlot.Plot.YLabel("EGW [μm]");
         }
 
         public void Draw(IGeometry geometry)
@@ -28,26 +43,25 @@ namespace CharterApp.ViewModels
             {
                 xvalues[x] = x;
                 yvalues[x] = geometry.ZFunction(x);
+
+                if (double.IsInfinity(yvalues[x]) && double.IsNaN(yvalues[x]))
+                    return;
             }
 
             //graph data implementation
-            DataPlot.Plot.AddScatter(xvalues, yvalues, label: "first");
+            DataPlot.Plot.AddScatter(xvalues, yvalues, label: geometry.LegendLabel, markerShape: MarkerShape.none);
 
             //graph style
-            //DataPlot.Plot.Style(ScottPlot.Style.Blue2);
             DataPlot.BorderBrush = new SolidColorBrush(Colors.White);
 
-            //graph description
-            DataPlot.Plot.Legend();
-            DataPlot.Plot.Title("CHART");
-            DataPlot.Plot.XLabel("Angle");
-            DataPlot.Plot.YLabel("EGW");
-
+            //graph funcionality
+            DataPlot.Plot.AxisAuto();
             DataPlot.Refresh();
         }
         public void Clear()
         {
-            DataPlot.Plot.ResetLayout();
+            DataPlot.Plot.Clear();
+            DataPlot.Refresh();
         }
     }
 }

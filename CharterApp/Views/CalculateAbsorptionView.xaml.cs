@@ -1,6 +1,4 @@
 ﻿using CharterApp.ViewModels;
-using ScottPlot;
-using ScottPlot.WPF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +11,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CharterApp.Views
 {
-    public partial class GraphView : UserControl
-    {  
-        public GraphView()
+    /// <summary>
+    /// Interaction logic for CalculateAbsorptionView.xaml
+    /// </summary>
+    public partial class CalculateAbsorptionView : Window
+    {
+        public CalculateAbsorptionView()
         {
+            DataContext = new CalculateAbsorptionViewModel();
             InitializeComponent();
-            Graph.RightClicked -= Graph.DefaultRightClickEvent;
         }
     }
 }

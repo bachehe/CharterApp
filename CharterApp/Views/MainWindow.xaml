@@ -10,7 +10,7 @@
         Title="CharterApp 1.0"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        WindowState="Maximized">
+        >
 
     <Grid Background="#252c48">
         <Grid.RowDefinitions>
@@ -31,12 +31,12 @@
                     <MenuItem Header="_Info"  Command="{Binding MenuInfoCommand}"/>
                 </MenuItem>
                 <MenuItem Header="_Calculate">
-                    <MenuItem Header="_Linear Factor" />
-                    <MenuItem Header="_Tetha" />
+                    <MenuItem Header="_Linear Factor" Command="{Binding  LinearFactorCalculatingWindow}" />
+                    <MenuItem Header="_Tetha" Command="{Binding TethaCalculateWindow}"/>
                     <MenuItem Header="_Absorption" Command="{Binding CalculateAbsortpionWindow}"/>
                     <Separator />
-                    <MenuItem Header="_Database" />
-                    <MenuItem Header="_Info" />
+                    <MenuItem Header="_Database" Command="{Binding DataBaseWindow}"/>
+                    <MenuItem Header="_Info" Command="{Binding MenuInfoCalculateCommand}"/>
                 </MenuItem>
             </Menu>
         </DockPanel>

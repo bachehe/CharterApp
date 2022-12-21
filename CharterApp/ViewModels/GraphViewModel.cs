@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using CharterApp.Models;
@@ -19,29 +20,17 @@ namespace CharterApp.ViewModels
     }
     public class GraphViewModel : IGraphViewModel
     {
-        public double x { get; set; }
         public ScottPlot.WpfPlot DataPlot { get; }
-        //private readonly ScottPlot.Plottable.ScatterPlot MyScatterPlot;
-        public string Cords { get; set; }
         public GraphViewModel()
         {
             DataPlot = new();
-            Cords = string.Empty;
         }
 
-        //public void OnMouseMoved()
-        //{
-        //    (double x, double y) = DataPlot.GetMouseCoordinates();
-        //    double xyRatio = DataPlot.Plot.XAxis.Dims.PxPerUnit / DataPlot.Plot.YAxis.Dims.PxPerUnit;
-        //    (double pointX, double pointY, int pointIndex) = MyScatterPlot.GetPointNearest(x, y, xyRatio);
-        //    Cords = $"coordinates: x {pointX}, y {pointY}";
-        //}
         public void SelectGeometryType(IGeometryType geometryType)
         {
-
             DataPlot.Plot.Legend();
             DataPlot.Plot.Title($"{geometryType.GeometryName}");
-            DataPlot.Plot.XLabel("Angle");
+            DataPlot.Plot.XLabel("Angle [°]");
             DataPlot.Plot.YLabel("EGW [μm]");
         }
 
@@ -54,6 +43,9 @@ namespace CharterApp.ViewModels
             {
                 xvalues[x] = x;
                 yvalues[x] = geometry.ZFunction(x);
+
+                if (double.IsInfinity(yvalues[x]))
+                    return;
             }
 
             //graph data implementation
@@ -64,7 +56,6 @@ namespace CharterApp.ViewModels
 
             //graph funcionality
             DataPlot.Plot.AxisAuto();
-
             DataPlot.Refresh();
         }
         public void Clear()

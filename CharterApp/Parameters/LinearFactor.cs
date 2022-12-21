@@ -8,7 +8,7 @@
 
         public bool Validate()
         {
-            return Value >= 1 && Value <= 900;
+            return Value >= 0 && Value <= 900;
         }
     }
 }

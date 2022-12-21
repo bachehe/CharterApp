@@ -7,7 +7,6 @@ namespace CharterApp.Models
     public class GeometryBB : IGeometry
     {
         private readonly LinearFactor _linearFactor;
-        private readonly Lamp _lamp;
      
         public List<IParametr> Parameters => new() { _linearFactor };
 

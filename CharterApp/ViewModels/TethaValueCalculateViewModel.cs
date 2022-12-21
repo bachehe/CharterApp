@@ -5,35 +5,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using CharterApp.Views;
 
 namespace CharterApp.ViewModels
 {
-    public interface ICalculateAbsorptionViewModel
+    public interface ITethaValueCalculateViewModel
     {
         DelegateCommand CalculateCommand { get; }
     }
-    public class CalculateAbsorptionViewModel : ICalculateAbsorptionViewModel, INotifyPropertyChanged
+    public class TethaValueCalculateViewModel : ITethaValueCalculateViewModel, INotifyPropertyChanged
     {
+        public double Dhkl { get; set; }
+        public double LambdaValue { get; set; }
         public double Result { get; set; }
-        public double ValueJo { get; set; }
-        public double ValueJx { get; set; }
-        public double LinearFactor { get; set; }
-
 
         public event PropertyChangedEventHandler? PropertyChanged;
         public DelegateCommand CalculateCommand { get; }
 
-        public CalculateAbsorptionViewModel()
+        public TethaValueCalculateViewModel()
         {
-            CalculateCommand = new(CalculateAbsorption);
+            CalculateCommand = new(CalculateTetha);
         }
 
-        private void CalculateAbsorption(object? obj)
+        public void CalculateTetha(object? obj)
         {
-            if (!(ValueJo <= 0 || ValueJx <= 0 || LinearFactor <= 0 || ValueJo == ValueJx || ValueJo >= 1000 || ValueJx >= 1000 || LinearFactor >= 1000))
+            if(!(Dhkl <= 0 || LambdaValue <= 0 || Dhkl >= 1000 || LambdaValue >= 1000))
             {
-                Result = Math.Round(Math.Log(ValueJo / ValueJx) / (-LinearFactor), 4);
+                Result = Math.Round(2 * Math.Pow(Math.Sin(LambdaValue / Dhkl), -1), 4);
                 OnPropertyChanged(nameof(Result));
             }
             else
@@ -41,7 +38,6 @@ namespace CharterApp.ViewModels
                 MessageBox.Show("Invalid input for parameters", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
-
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new(propertyName));

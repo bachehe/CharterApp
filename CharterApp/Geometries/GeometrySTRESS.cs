@@ -16,19 +16,19 @@ namespace CharterApp.Models
         public GeometrySTRESS()
         {
             _linearFactor = new();
-            _angleFactor = new ();
+            _angleFactor = new();
         }
 
         public double ZFunction(double x)
         {
-            double sinValue = _angleFactor.Value;
-            double variable = _linearFactor.Value;
+            if (x <= 0)
+                return 0;
 
             var upper = Math.Log(0.05) * -1;
-            var lower = 2 * variable;
-            var rad = Math.Sin((sinValue * Math.PI) / 180) * Math.Cos((x * Math.PI) / 180); //value 42.5 i think is also user input
+            var lower = 2 * _linearFactor.Value;
+            var rad = Math.Sin((_angleFactor.Value * Math.PI) / 180) * Math.Cos((x * Math.PI) / 180);
             var result = ((upper / lower) * rad) * 10000;
-            
+
             return result;
         }
     }

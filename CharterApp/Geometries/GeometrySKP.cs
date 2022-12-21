@@ -18,6 +18,7 @@ namespace CharterApp.Models
         {
             _linearFactor = new();
             _angleFactor = new();
+
         }
 
         public double ZFunction(double x) 

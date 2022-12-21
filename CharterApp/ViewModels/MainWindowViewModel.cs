@@ -40,18 +40,21 @@ namespace CharterApp.ViewModels
                 DrawCommand.UpdateCanExecute();
             }
         }
+        public DelegateCommand DataBaseWindow { get; }
+        public DelegateCommand TethaCalculateWindow { get; }
+        public DelegateCommand LinearFactorCalculatingWindow { get; }
         public ObservableCollection<IGeometry> Geometries { get; }
         public DelegateCommand CalculateAbsortpionWindow { get; }
         public DelegateCommand ExitCommand { get; }
         public DelegateCommand MinimizeCommand { get; }
         public DelegateCommand MenuHelpCommand { get; }
+        public DelegateCommand MenuInfoCalculateCommand { get; }
         public DelegateCommand MenuInfoCommand { get; }
         public DelegateCommand AddGeometryCommand { get; }
         public DelegateCommand RemoveGeometryCommand { get; }
         public DelegateCommand DrawCommand { get; }
         public DelegateCommand ClearCommand { get; }
         public GraphViewModel GraphViewModel { get; }
-
         public MainWindowViewModel()
         {
             GeometryTypes = new()
@@ -60,10 +63,14 @@ namespace CharterApp.ViewModels
                 new GeometryType<GeometrySKP>("SKP"),
                 new GeometryType<GeometrySTRESS>("STRESS"),
             };
+            DataBaseWindow = new(OnClickOpenDataBaseWindow);
+            TethaCalculateWindow = new(OnClickTethaOpenTetha);
+            LinearFactorCalculatingWindow = new(OnClickOpenLinearFactor);
             CalculateAbsortpionWindow = new(OnClickOpenAbsorption);
             Geometries = new();
             MinimizeCommand = new(OnClickMinimizeCommand);
             ExitCommand = new(OnClickExitCommand);
+            MenuInfoCalculateCommand = new(OnClickInfoCalculateOpen);
             MenuInfoCommand = new(OnClickInfoExecute);
             MenuHelpCommand = new(OnClickHelpExecute);
             AddGeometryCommand = new(OnAddGeometryExecute);
@@ -73,7 +80,25 @@ namespace CharterApp.ViewModels
             GraphViewModel = new();
 
         }
-
+        private void OnClickInfoCalculateOpen(object? obj)
+        {
+            MenuViewModel.CalculateInfo();
+        }
+        private void OnClickOpenDataBaseWindow(object? obj)
+        {
+            DataBaseView view = new();
+            view.Show();
+        }
+        private void OnClickTethaOpenTetha(object? obj)
+        {
+            TethaValueCalculateView view = new();
+            view.Show();
+        }
+        private void OnClickOpenLinearFactor(object? obj)
+        {
+            LinearFactorCalculatingView view = new();
+            view.Show();
+        }
         private void OnClickOpenAbsorption(object? obj)
         {
             CalculateAbsorptionView view = new();
@@ -119,7 +144,11 @@ namespace CharterApp.ViewModels
             foreach (var g in Geometries)
             {
                 if (g.Parameters.Any(x => !x.Validate()))
+                {
+                    MessageBox.Show("No input for values was recorded", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
+                }
+                    
 
                 GraphViewModel.Draw(g);
             }

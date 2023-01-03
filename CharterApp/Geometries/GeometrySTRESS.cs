@@ -14,8 +14,7 @@ namespace CharterApp.Models
         private readonly LampEnum _lampEnum;
         public Lamp Lamp { get; set; }
         public List<IParametr> Parameters => new() { _linearFactor, _angleFactor, _plane };
-        public string LegendLabel => $"{Lamp.LampName}, {_linearFactor.Name}: {_linearFactor.Value}μm, {_angleFactor.NamePsi}: {_angleFactor.Value}, {{{_plane.Value}}}";
-
+        public string LegendLabel => $"{Lamp.LampName}, {_linearFactor.Name}: {_linearFactor.Value}μm, {_angleFactor.NamePsi}: {_angleFactor.Value}, hkl: {{{_plane.Value}}}";
 
         public GeometrySTRESS()
         {

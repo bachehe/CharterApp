@@ -17,7 +17,7 @@ namespace CharterApp.Models
 
         public bool Validate()
         {
-            return Value >= 999 && Value <= 100;
+            return Value >= 0 && Value <= 999;
         }
     }
 }

@@ -3,21 +3,20 @@
 Charter is app being a part of engineering diploma, simplifying x-ray research.
 App allows user to create 4 types of charts, based on its geometry:
 
->BB
-
->SKP
-
->STRESS
+```
+BB
+SKP
+STRESS
+```
 
 Following geometries requires individual input, such as
 
->lamp element
-
->linear factor
-
->angle
-
->hkl
+```
+lamp element
+linear factor
+angle
+hkl
+```
 
 Application will allow up to 4 charts at once:
 ![image](https://user-images.githubusercontent.com/89192599/210411351-7d015d51-5442-441f-8fd6-5649f2f0a55e.png)

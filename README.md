@@ -26,7 +26,8 @@ For more accurate values, user can check such details by feature:
 ![image](https://user-images.githubusercontent.com/89192599/210411487-721bae33-047b-49b2-85e2-88fd85312c1d.png)
 
 
-Second part of Charter is desired for calculating earlier mentioned values, which are:
+
+<b> Second part of Charter is desired for calculating earlier mentioned values, which are: </b>
 
 <b> Absorption </b>
 

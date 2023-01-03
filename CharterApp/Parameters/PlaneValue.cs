@@ -15,7 +15,6 @@ namespace CharterApp.Models
 
         public double Value { get; set; }
 
-        public string StringValue => Value.ToString().PadLeft(3, '0');
 
         public bool Validate()
         {

@@ -21,7 +21,6 @@ namespace CharterApp.ViewModels
             Cu = new List<decimal>();
             Co = new List<decimal>();
             Cr = new List<decimal>();
-
         }
     }
 }

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CharterApp" xmlns:views="clr-namespace:CharterApp.Views"
-        mc:Ignorable="d" Icon="/Images/favicon.ico"
+        mc:Ignorable="d" 
         xmlns:vm="clr-namespace:CharterApp.ViewModels"
         d:DataContext ="{d:DesignInstance vm:MainWindowViewModel}"
         Title="CharterApp 1.0" WindowState="Maximized"

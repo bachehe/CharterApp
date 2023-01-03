@@ -63,6 +63,7 @@ namespace CharterApp.ViewModels
                 new GeometryType<GeometrySKP>("SKP"),
                 new GeometryType<GeometrySTRESS>("STRESS"),
             };
+
             DataBaseWindow = new(OnClickOpenDataBaseWindow);
             TethaCalculateWindow = new(OnClickTethaOpenTetha);
             LinearFactorCalculatingWindow = new(OnClickOpenLinearFactor);
@@ -80,6 +81,7 @@ namespace CharterApp.ViewModels
             GraphViewModel = new();
 
         }
+    
         private void OnClickInfoCalculateOpen(object? obj)
         {
             MenuViewModel.CalculateInfo();
@@ -143,9 +145,9 @@ namespace CharterApp.ViewModels
 
             foreach (var g in Geometries)
             {
-                if (g.Parameters.Any(x => !x.Validate()) && g.Lamp.LampName == null)
+                if (g.Parameters.Any(x => !x.Validate()) || g.Lamp.LampName == null)
                 {
-                    MessageBox.Show("No input for values was recorded", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("No valid input for values was recorded", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }           
 

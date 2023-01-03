@@ -7,52 +7,51 @@
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:CharterApp.ViewModels"
         d:DataContext ="{d:DesignInstance vm:MainWindowViewModel}"
-        Title="CharterApp 1.0"
+        Title="CharterApp 1.0" WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="CanMinimize"
-        >
+        ResizeMode="CanMinimize" >
     <ScrollViewer>
-        
-    <Grid Background="#252c48">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
 
-        <!-- Menu -->
-        <DockPanel Grid.ColumnSpan="2" Grid.Row="0">
-            <Menu DockPanel.Dock="Top" FontSize="15">
-                <MenuItem Header="_App">
-                    <MenuItem Header="_Help"  Command="{Binding MenuHelpCommand}"/>
-                    <MenuItem Header="_Info"  Command="{Binding MenuInfoCommand}"/>
-                </MenuItem>
-                <MenuItem Header="_Calculate">
-                    <MenuItem Header="_Linear Factor" Command="{Binding  LinearFactorCalculatingWindow}" />
-                    <MenuItem Header="_Tetha" Command="{Binding TethaCalculateWindow}"/>
-                    <MenuItem Header="_Absorption" Command="{Binding CalculateAbsortpionWindow}"/>
-                    <Separator />
-                    <MenuItem Header="_Database" Command="{Binding DataBaseWindow}"/>
-                    <MenuItem Header="_Info" Command="{Binding MenuInfoCalculateCommand}"/>
-                </MenuItem>
-            </Menu>
-        </DockPanel>
+        <Grid Background="#252c48">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <!-- Left Bar -->
-        <StackPanel Grid.Row="1" Grid.Column="0">
-            <views:UserControlView/>
-        </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <!-- Graph View -->
-        <StackPanel Grid.Row="1" Grid.Column="1" DataContext="{Binding GraphViewModel}">
-            <views:GraphView/>
-        </StackPanel>
+            <!-- Menu -->
+            <DockPanel Grid.ColumnSpan="2" Grid.Row="0">
+                <Menu DockPanel.Dock="Top" FontSize="15">
+                    <MenuItem Header="_App">
+                        <MenuItem Header="_Help" Command="{Binding MenuHelpCommand}"/>
+                        <MenuItem Header="_Info" Command="{Binding MenuInfoCommand}"/>
+                    </MenuItem>
+                    <MenuItem Header="_Calculate">
+                        <MenuItem Header="_Linear Factor" Command="{Binding  LinearFactorCalculatingWindow}" />
+                        <MenuItem Header="_Tetha" Command="{Binding TethaCalculateWindow}"/>
+                        <MenuItem Header="_Absorption" Command="{Binding CalculateAbsortpionWindow}"/>
+                        <Separator />
+                        <MenuItem Header="_Database" Command="{Binding DataBaseWindow}"/>
+                        <MenuItem Header="_Info" Command="{Binding MenuInfoCalculateCommand}"/>
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
 
-    </Grid>
+            <!-- Left Bar -->
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <views:UserControlView/>
+            </StackPanel>
+
+            <!-- Graph View -->
+            <StackPanel Grid.Row="1" Grid.Column="1" DataContext="{Binding GraphViewModel}">
+                <views:GraphView/>
+            </StackPanel>
+
+        </Grid>
     </ScrollViewer>
 
 </Window>

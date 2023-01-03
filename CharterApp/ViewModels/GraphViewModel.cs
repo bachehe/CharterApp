@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,6 +9,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using CharterApp.Models;
+using CharterApp.Views;
 using ScottPlot;
 using ScottPlot.WPF;
 
@@ -20,10 +23,17 @@ namespace CharterApp.ViewModels
     }
     public class GraphViewModel : IGraphViewModel
     {
+        public ObservableCollection<double> XValues { get; set; }
+        public ObservableCollection<double> YValues { get; set; }
+        public DelegateCommand DetailWindow { get; }     
         public ScottPlot.WpfPlot DataPlot { get; }
         public GraphViewModel()
         {
+            XValues = new ObservableCollection<double>();
+            YValues = new ObservableCollection<double>();
+
             DataPlot = new();
+            DetailWindow = new(OnClickOpenDetailWindow);
         }
 
         public void SelectGeometryType(IGeometryType geometryType)
@@ -35,16 +45,21 @@ namespace CharterApp.ViewModels
         }
 
         public void Draw(IGeometry geometry)
-        {
-            var xvalues = new double[91];
-            var yvalues = new double[91];
+         {
+            var yvalues = new double[90];
+            var xvalues = new double[90];
 
+            XValues.Clear();
+            YValues.Clear();
             for (int x = 1; x < 91; x++)
             {
-                xvalues[x] = x;
-                yvalues[x] = geometry.ZFunction(x);
+                xvalues[x-1] = x;
+                yvalues[x-1] = Math.Round(geometry.ZFunction(x), 4);
 
-                if (double.IsInfinity(yvalues[x]) && double.IsNaN(yvalues[x]))
+                XValues.Add(x);
+                YValues.Add(yvalues[x-1]);
+
+                if (double.IsInfinity(yvalues[x-1]) && double.IsNaN(yvalues[x-1]))
                     return;
             }
 
@@ -62,6 +77,12 @@ namespace CharterApp.ViewModels
         {
             DataPlot.Plot.Clear();
             DataPlot.Refresh();
+        }
+        private void OnClickOpenDetailWindow(object? obj)
+        {
+            DetailView view = new();
+            view.DataContext = this;
+            view.Show();
         }
     }
 }

@@ -11,17 +11,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CharterApp
+namespace CharterApp.Views
 {
-    public partial class MainWindow : Window
+    public partial class DetailView : Window
     {
-        public MainWindow(IMainWindowViewModel mainWindowViewModel)
+        public DetailView()
         {
-            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            DataContext = mainWindowViewModel;
             InitializeComponent();
         }
     }

@@ -15,6 +15,8 @@ namespace CharterApp.Models
 
         public double Value { get; set; }
 
+        public string StringValue => Value.ToString().PadLeft(3, '0');
+
         public bool Validate()
         {
             return Value >= 0 && Value <= 999;

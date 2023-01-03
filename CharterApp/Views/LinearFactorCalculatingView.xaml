@@ -49,14 +49,13 @@
 
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
             <Button FontSize="20" Content="Calculate" Command="{Binding CalculateCommand}" Width="100"/>
-
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Margin="0 0 10 0" HorizontalAlignment="Center">
             <Border  BorderThickness="1"  BorderBrush="Black" Padding="10">
                 <StackPanel>
                     <TextBlock Text="Linear factor μ:" FontSize="20" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding LinearFactor}" FontSize="20" Width="150"/>
+                    <TextBox Text="{Binding LinearFactor}" FontSize="20" Width="150" IsReadOnly="True"/>
                 </StackPanel>
             </Border>
         </StackPanel>

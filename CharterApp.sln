@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CharterApp", "CharterApp\CharterApp.csproj", "{16D03A11-3211-4827-88CE-1D38F6D4C6AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharterApp.Tests", "CharterApp.Tests\CharterApp.Tests.csproj", "{B6D0C4C4-A31F-415B-A9FF-15691CC766DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CharterApp.Tests", "CharterApp.Tests\CharterApp.Tests.csproj", "{B6D0C4C4-A31F-415B-A9FF-15691CC766DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

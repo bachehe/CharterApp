@@ -11,10 +11,7 @@ namespace CharterApp.Models
         public List<IParametr> Parameters => new() { _linearFactor };
         private readonly LampEnum _lampEnum;
         public Lamp Lamp { get; set; }
-
-        public string LegendLabel => $"{Lamp.LampName}, {_linearFactor.Name}: {_linearFactor.Value}μm";
-
-
+        public string LegendLabel => $"{Lamp.LampName}, {_linearFactor.Name}: {_linearFactor.Value}μm, θ";
         public GeometryBB()
         {
             _linearFactor = new();
@@ -24,8 +21,7 @@ namespace CharterApp.Models
         public double ZFunction(double x)
         {
             if (_linearFactor.Value == 0)
-                return 0;
-            
+                return 0;           
 
             var rad = Math.Sin((x * Math.PI) / 180);
             var upper = Math.Log(20);

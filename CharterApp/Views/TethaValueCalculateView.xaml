@@ -45,7 +45,7 @@
         <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Border BorderThickness="1"  BorderBrush="Black" Padding="10">
                 <StackPanel>
-                    <TextBlock FontSize="25" Text="θ[°]"  Width="100" HorizontalAlignment="Left"/>
+                    <TextBlock FontSize="25" Text="2θ[°]"  Width="100" HorizontalAlignment="Left"/>
                     <TextBox FontSize="20" IsReadOnly="True" Text="{Binding Result}"  Width="100" HorizontalAlignment="Left"/>
                 </StackPanel>
             </Border>

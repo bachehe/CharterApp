@@ -30,11 +30,12 @@ namespace CharterApp.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var filePath = "./Data/basecsv.csv";
+            var filePath = "./Data/newbase.csv";
 
             DataBaseViewModel model = new();
 
             DataTable dt = new DataTable();
+            dt.Columns.Add("Element", typeof(string));
             dt.Columns.Add("Density", typeof(string));
             dt.Columns.Add("Mo", typeof(string));
             dt.Columns.Add("Cu", typeof(string));
@@ -44,12 +45,14 @@ namespace CharterApp.Views
             foreach (var line in File.ReadAllLines(filePath))
             {
                 var values = line.Split(';');
-                var density = decimal.Parse(values[0]);
-                var mo = decimal.Parse(values[1]);
-                var cu = decimal.Parse(values[2]);
-                var co = decimal.Parse(values[3]);
-                var cr = decimal.Parse(values[4]);
+                var element = values[0];
+                var density = decimal.Parse(values[1]);
+                var mo = decimal.Parse(values[2]);
+                var cu = decimal.Parse(values[3]);
+                var co = decimal.Parse(values[4]);
+                var cr = decimal.Parse(values[5]);
 
+                model.Element.Add(element);
                 model.Density.Add(density);
                 model.Mo.Add(mo);
                 model.Cu.Add(cu);

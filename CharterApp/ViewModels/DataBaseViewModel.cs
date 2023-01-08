@@ -8,6 +8,7 @@ namespace CharterApp.ViewModels
 {
     public class DataBaseViewModel
     {
+        public List<string> Element { get; set; }
         public List<decimal> Density { get; set; }
         public List<decimal> Mo { get; set; }
         public List<decimal> Cu { get; set; }
@@ -16,6 +17,7 @@ namespace CharterApp.ViewModels
 
         public DataBaseViewModel()
         {
+            Element = new List<string>();
             Density = new List<decimal>();
             Mo = new List<decimal>();
             Cu = new List<decimal>();

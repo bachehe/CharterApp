@@ -7,6 +7,6 @@
         mc:Ignorable="d" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen"
         Title="Database" Height="600" Width="800"> 
     <Grid Background="AliceBlue">
-        <DataGrid Name="DataGrid" Margin="15" IsReadOnly="True" FontSize="15" RowHeight="30" CanUserResizeColumns="False" MinColumnWidth="145"/>
+        <DataGrid Name="DataGrid" Margin="15" IsReadOnly="True" FontSize="15" RowHeight="30" CanUserResizeColumns="False" MinColumnWidth="121"/>
     </Grid>
 </Window>

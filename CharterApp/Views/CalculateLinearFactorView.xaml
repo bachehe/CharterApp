@@ -4,9 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CharterApp.Views"
+        xmlns:main="clr-namespace:CharterApp"
+        xmlns:vm="clr-namespace:CharterApp.ViewModels"
+        xmlns:lamp="clr-namespace:CharterApp.Lamps"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance vm:LinearFactorCalculatingViewModel}"
         Title="CalculateLinearFactorView" Height="450" Width="800">
     <Grid>
-        
+        <StackPanel>
+            <ComboBox ItemsSource="{x:Static lamp:Lamp.Lamps}" SelectedItem="{Binding Lamp}" DisplayMemberPath="LampName"/>
+
+            <ItemsControl ItemsSource="{Binding Elements}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <ComboBox ItemsSource="{Binding Source={x:Static main:Data.Values}, Path=Keys}" SelectedItem="{Binding Element}"/>
+                            <TextBox Text="{Binding Percentage}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Button Command="{Binding AddElementCommand}" Content="+"/>
+        </StackPanel>
     </Grid>
 </Window>

@@ -20,7 +20,7 @@ namespace CharterApp.Tests.ViewModels
         public void CalculateLinearFactor_ForGivenValues_ShouldReturnExpectedResult(decimal density, decimal mo, decimal cu, decimal co, decimal cr, decimal expected)
         {
             var sut = new LinearFactorCalculatingViewModel();
-            sut.Density = density;
+            //sut.Density = density;
             sut.MoPercentage = mo;
             sut.CuPercentage = cu;
             sut.CoPercentage = co;
@@ -41,7 +41,7 @@ namespace CharterApp.Tests.ViewModels
         public void FePercentage_ForGivenPercentages_ShouldReturnRestToHundredPercent(decimal density, decimal mo, decimal cu, decimal co, decimal cr, decimal expected)
         {
             var sut = new LinearFactorCalculatingViewModel();
-            sut.Density = density;
+            //sut.Density = density;
             sut.MoPercentage = mo;
             sut.CuPercentage = cu;
             sut.CoPercentage = co;

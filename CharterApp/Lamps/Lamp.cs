@@ -10,10 +10,10 @@ namespace CharterApp.Lamps
         {
             Lamps = new()
             {
-                new(LampEnum.Co),
+                new(LampEnum.Mo),
                 new(LampEnum.Cu),
+                new(LampEnum.Co),
                 new(LampEnum.Cr),
-                new(LampEnum.Mo)
             };
         }
 

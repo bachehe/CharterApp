@@ -98,7 +98,9 @@ namespace CharterApp.ViewModels
         }
         private void OnClickOpenLinearFactor(object? obj)
         {
-            LinearFactorCalculatingView view = new();
+            //LinearFactorCalculatingView view = new();
+
+            CalculateLinearFactorView view = new();
             view.Show();
         }
         private void OnClickOpenAbsorption(object? obj)

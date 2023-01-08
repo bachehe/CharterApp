@@ -21,7 +21,6 @@ namespace CharterApp.Calculate
             CrValues = new();
 
             var filePath = "./Data/basecsv.csv";
-            //var filePath = "basecsv.csv";
 
             foreach (var line in File.ReadAllLines(filePath))
             {

@@ -37,11 +37,11 @@ namespace CharterApp.ViewModels
             {
                 FePercentage = 1 - MoPercentage - CuPercentage - CoPercentage - CrPercentage;
 
-                if (MoPercentage + CuPercentage + CoPercentage + CrPercentage >= 1)
-                {
-                    MessageBox.Show("Invalid input for elements", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
+                //if (MoPercentage + CuPercentage + CoPercentage + CrPercentage >= 1)
+                //{
+                //    MessageBox.Show("Invalid input for elements", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //    return;
+                //}
 
                 var index = Data.Densities.IndexOf(Density);
 

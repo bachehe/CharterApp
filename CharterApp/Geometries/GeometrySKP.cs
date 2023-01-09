@@ -25,8 +25,11 @@ namespace CharterApp.Models
 
         public double ZFunction(double x)
         {
-            if (_linearFactor.Value == 0 && _angleFactor.Value == 0)
+            if (_linearFactor.Value == 0 || _angleFactor.Value == 0)
+            {
+                MessageBox.Show("Values has to be greater than 0", "Invalid input", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return 0;
+            }
 
             var alpha = _angleFactor.Value;
             var variable = _linearFactor.Value;

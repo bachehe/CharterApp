@@ -25,9 +25,12 @@ namespace CharterApp.Models
 
         public double ZFunction(double x)
         {
-            if (_linearFactor.Value == 0 && _angleFactor.Value == 0)
+            if (_linearFactor.Value == 0 || _angleFactor.Value == 0)
+            {
+                MessageBox.Show("Values has to be greater than 0", "Invalid input", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return 0;
-        
+            }
+
             var upper = Math.Log(0.05) * -1;
             var lower = 2 * _linearFactor.Value;
             var rad = Math.Sin((_angleFactor.Value * Math.PI) / 180) * Math.Cos((x * Math.PI) / 180);

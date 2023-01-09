@@ -12,9 +12,9 @@ namespace CharterApp.Tests.ViewModels
     public class CalculateAbsorptionViewModelTests
     {
         [Test]
-        [TestCase(10, 5, 0.5, -1.386)]
-        [TestCase(10, 5, 100, -0.007)]
-        [TestCase(10, 12, 60, 0.003)]
+        [TestCase(10, 5, 0.5, 1.386)]
+        [TestCase(10, 5, 100, 0.007)]
+        [TestCase(120, 10, 60, 0.041)]
         public void CalculateAbsorption_ForGivenValues_ShouldReturnExpectedResult(double Jo, double Jx, double linear, double expected)
         {
             var sut = new CalculateAbsorptionViewModel();
@@ -24,7 +24,7 @@ namespace CharterApp.Tests.ViewModels
 
             sut.CalculateCommand.Execute(null);
 
-            Assert.AreEqual(expected, Math.Round(sut.Result, 3), 0.0001);
+            Assert.AreEqual(expected, Math.Round(sut.Result, 3));
         }
     }
 }

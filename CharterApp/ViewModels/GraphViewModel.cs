@@ -55,7 +55,6 @@ namespace CharterApp.ViewModels
             {
                 //if (x == 1 || x == 2)
                 //    continue;
-
                 xvalues[x-1] = x;
                 yvalues[x-1] = Math.Round(geometry.ZFunction(x), 2);
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CharterApp.Views"
         xmlns:vm="clr-namespace:CharterApp.ViewModels"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
-        Title="Absorption Calculator" Height="400" Width="500"
+        Title="Absorption Calculator" Height="450" Width="500"
         d:DataContext ="{d:DesignInstance vm:CalculateAbsorptionViewModel}">
 
     <Grid Background="AliceBlue">
@@ -21,9 +21,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.ColumnSpan="3" Margin="15">
-            <TextBlock  FontSize="25" Text="Absorption calculate base" Height="50"/>
-            <TextBlock  FontSize="16" Margin="5 0 0 0" Text="Provide input for Jo, Jx and μ with correct format (e.g. 0.53)" Height="50"/>
+        <StackPanel Grid.ColumnSpan="3" Margin="15" Background="#252c48" Width="450">
+            <TextBlock  FontSize="25" Margin="10 10 0 0" Text="Absorption calculate base" Height="50" Foreground="LightGray"/>
+            <TextBlock  FontSize="16" Margin="10 10 0 0" Text="Provide input for Jo, Jx and μ with correct format (e.g. 0.53)" Height="50" Foreground="LightGray"/>
         </StackPanel>
 
 
@@ -44,7 +44,7 @@
             <Button  FontSize="20" Command="{Binding CalculateCommand}" Content="Calculate" Width="100" />
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center">
+        <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Margin="0 0 20 0">
             <Border BorderThickness="1"  BorderBrush="Black" Padding="10">
                 <StackPanel>
                     <TextBlock FontSize="20" Text="x [μm]" Margin="10 0 0 0" Width="100"/>

@@ -13,6 +13,7 @@ namespace CharterApp.ViewModels
     }
     public class LinearFactorCalculatingViewModel : ILinearFactorCalculatingViewModel, INotifyPropertyChanged
     {
+        public decimal SumPercentage;
         private int _maxElementCount = 10;
         public decimal Density { get; set; }
         public decimal Result { get; set; }
@@ -40,77 +41,57 @@ namespace CharterApp.ViewModels
         private void OnAddElementExecute(object? obj)
         {
             if (Elements.Count == _maxElementCount)
+            {
+                MessageBox.Show("Can not add more elements", "Limit for elements reached", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
+            }
 
             Elements.Add(new());
         }
 
-        private void CalculateLinearFactor(object? obj)
+        public void CalculateLinearFactor(object? obj)
         {
+            //Data.Values.Values.Any(x => x.ElementDensity == Density) && Density != 0 => condition for density out of database
+            
             decimal res = 0;
-
-            if (Data.Values.Values.Any(x => x.ElementDensity == Density) && Density != 0)
+            SumPercentage = 0;
+            if(Density <= 0 || Density >= 24)
             {
-                foreach (var el in Elements)
+                MessageBox.Show("Density has to be between 0 and 24", "Invalid input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            foreach (var el in Elements)
+            {
+                if (el.Percentage == 0 || el.Element == null)
                 {
-                    if (el.Percentage == 0 || el.Element == null)
-                    {
-                        MessageBox.Show("No input was recorded", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        return;
-                    }
-
-                    var dbValue = Data.Values[el.Element];
-                    var kAlfa = dbValue[Lamp.LampType];
-
-                    res += (el.Percentage * kAlfa);
+                    MessageBox.Show("No input was recorded", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
                 }
-                res *= Density;
-                Result = Math.Round(res, 4);
 
-                OnPropertyChanged(nameof(Result));
+                var dbValue = Data.Values[el.Element];
+                var kAlfa = dbValue[Lamp.LampType];
+
+                SumPercentage += el.Percentage;
+
+                res += (el.Percentage * kAlfa);
             }
-            else
+            if (SumPercentage != 1)
             {
-                MessageBox.Show("Density value out of database resource", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Sum of element value's should be equal to 1", "Invalid element value's", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
 
+            res *= Density;
+            Result = Math.Round(res, 4);
+            OnPropertyChanged(nameof(Result));
 
-            #region test
-            //if (!(MoPercentage < 0 || CuPercentage < 0 || CrPercentage < 0 || CoPercentage < 0 || MoPercentage > 1 || CuPercentage > 1 || CrPercentage > 1 || CoPercentage > 1))
-            //{
-            //    FePercentage = 1 - MoPercentage - CuPercentage - CoPercentage - CrPercentage;
-
-            //    //if (MoPercentage + CuPercentage + CoPercentage + CrPercentage >= 1)
-            //    //{
-            //    //    MessageBox.Show("Invalid input for elements", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
-            //    //    return;
-            //    //}
-
-            //    if (Element is null)
-            //    {
-            //        MessageBox.Show("Please choose an element", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
-            //        return;
-            //    }
-
-            //    var dbValue = Data.Values[Element];
-
-            //    //LinearFactor = Math.Round(dbValue[Lamps.LampEnum.Mo] * MoPercentage +
-            //    //    dbValue[Lamps.LampEnum.Cu] * CuPercentage +
-            //    //    dbValue[Lamps.LampEnum.Co] * CoPercentage +
-            //    //    dbValue[Lamps.LampEnum.Cr] * CrPercentage) * dbValue.ElementDensity), 4);
-
-            //    OnPropertyChanged(nameof(LinearFactor));
-            //    OnPropertyChanged(nameof(FePercentage));
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Invalid input for parameters", "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Warning);
-            //}
-            #endregion
+            SumPercentage = 0;
         }
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new(propertyName));
         }
     }
+
 }

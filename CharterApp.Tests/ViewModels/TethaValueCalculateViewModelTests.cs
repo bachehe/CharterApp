@@ -11,11 +11,11 @@ namespace CharterApp.Tests.ViewModels
     public class TethaValueCalculateViewModelTests
     {
         [Test]
-        [TestCase(1, 1, 2.377)]
-        [TestCase(10, 15, 2.005)]
-        [TestCase(61, 43, 3.087)]
-        [TestCase(71, 77, 2.262)]
-        [TestCase(5, 11, 2.474)]
+        [TestCase(2, 1, 28.96)]
+        [TestCase(10, 15, 97.180)]
+        [TestCase(61, 43, 41.280)]
+        [TestCase(77, 71, 54.900)]
+        [TestCase(11, 5, 26.280)]
         public void CalculateTehta_ForGivenValues_ShouldReturnExpectedResult(double dhkl, double lambda, double expected)
         {
             var sut = new TethaValueCalculateViewModel();

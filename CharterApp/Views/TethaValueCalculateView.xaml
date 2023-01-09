@@ -22,9 +22,9 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.ColumnSpan="3" Margin="15">
-            <TextBlock  FontSize="25" Text="Tetha calculate base" Height="50"/>
-            <TextBlock  FontSize="16" Margin="5 0 0 0" Text="Provide input for Dhkl and λ with correct format (e.g. 0.53)"/>
+        <StackPanel Grid.ColumnSpan="3" Margin="15" Background="#252c48" Width="450" Height="100" >
+            <TextBlock Margin="10 0 0 0" Foreground="LightGray" FontSize="25" Text="Tetha calculate base" Height="50"/>
+            <TextBlock Foreground="LightGray" FontSize="16" Margin="10 10 0 0" Text="Provide input for Dhkl and λ with correct format (e.g. 0.53)"/>
         </StackPanel>
 
         <StackPanel Margin="10" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">

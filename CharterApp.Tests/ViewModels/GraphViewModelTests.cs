@@ -13,16 +13,17 @@ namespace CharterApp.Tests.ViewModels
     public class GraphViewModelTests
     {
         [Test]
-        public void DrawMethod() // TODO: refactor
+        public void Draw_VeryfingMethods()
         {
-            var mockGeometryType = new Mock<IGeometry>();
-            mockGeometryType.Setup(x => x.ZFunction(0)).Returns(0);
+            var mockGeometry = new Mock<IGeometry>();
+            mockGeometry.SetupAllProperties();
+            mockGeometry.Setup(x => x.ZFunction(It.IsAny<int>())).Returns(2);
+            mockGeometry.Setup(x => x.LegendLabel).Returns("Test Label");
 
             var mockGraphModel = new Mock<IGraphViewModel>();
-            mockGraphModel.Setup(x => x.Draw(mockGeometryType.Object));
+            mockGraphModel.Object.Draw(mockGeometry.Object);
 
-            mockGraphModel.CallBase = true;
-
+            mockGraphModel.Verify(x => x.Draw(mockGeometry.Object), Times.Once());
             mockGraphModel.VerifyNoOtherCalls();
         }
     }

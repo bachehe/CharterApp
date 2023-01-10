@@ -41,7 +41,7 @@ namespace CharterApp.ViewModels
             DataPlot.Plot.Legend();
             DataPlot.Plot.Title($"{geometryType.GeometryName}");
             DataPlot.Plot.XLabel("Angle [°]");
-            DataPlot.Plot.YLabel("EGW [μm]");
+            DataPlot.Plot.YLabel("EPD [μm]");
         }
 
         public void Draw(IGeometry geometry)

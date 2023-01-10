@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharterApp.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -20,10 +21,12 @@ namespace CharterApp.ViewModels
 
         public event PropertyChangedEventHandler? PropertyChanged;
         public DelegateCommand CalculateCommand { get; }
+        public DelegateCommand OnClickOpenDetails { get; }
 
         public TethaValueCalculateViewModel()
         {
             CalculateCommand = new(CalculateTetha);
+            OnClickOpenDetails = new(OpenDetailsView);
         }
 
         public void CalculateTetha(object? obj)
@@ -42,6 +45,11 @@ namespace CharterApp.ViewModels
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new(propertyName));
+        }
+        private void OpenDetailsView(object? obj)
+        {
+            TethaDetailLambdaValuesView view = new();
+            view.Show();
         }
     }
 }

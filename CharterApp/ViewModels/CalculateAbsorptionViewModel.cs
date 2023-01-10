@@ -31,7 +31,7 @@ namespace CharterApp.ViewModels
 
         private void CalculateAbsorption(object? obj)
         {
-            if (!(ValueJo <= 0 || ValueJx <= 0 || LinearFactor <= 0 || ValueJo >= 1000 || ValueJx >= 1000 || LinearFactor >= 1000 || ValueJo < ValueJx))
+            if (!(ValueJo <= 0 || ValueJx <= 0 || LinearFactor <= 0 || ValueJo >= 1000 || ValueJx >= 1000 || LinearFactor >= 10000 || ValueJo < ValueJx))
             {
                 if (ValueJo == ValueJx)
                     Result = 0;

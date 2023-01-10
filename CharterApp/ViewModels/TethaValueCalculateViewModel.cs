@@ -31,7 +31,7 @@ namespace CharterApp.ViewModels
             if(!(Dhkl <= 0 || LambdaValue <= 0 || Dhkl >= 1000 || LambdaValue >= 1000))
             {
                 var rad = Math.Asin(LambdaValue / (2 * Dhkl));
-                Result = 2 * Math.Round((180/Math.PI) * rad, 2);
+                Result =  Math.Round((180/Math.PI) * rad, 2);
                 OnPropertyChanged(nameof(Result));
             }
             else

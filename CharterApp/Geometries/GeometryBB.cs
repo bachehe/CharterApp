@@ -23,7 +23,7 @@ namespace CharterApp.Models
             if (_linearFactor.Value == 0)
             {
                 MessageBox.Show("Values has to be greater than 0", "Invalid input", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
-                return 0;          
+                _linearFactor.Value = 1;
             }
 
             var rad = Math.Sin((x * Math.PI) / 180);

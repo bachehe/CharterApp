@@ -28,7 +28,9 @@ namespace CharterApp.Models
             if (_linearFactor.Value == 0 || _angleFactor.Value == 0)
             {
                 MessageBox.Show("Values has to be greater than 0", "Invalid input", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return 0;
+                _linearFactor.Value = 1;
+                _angleFactor.Value = 1;
+               // return 1;
             }
 
             var alpha = _angleFactor.Value;

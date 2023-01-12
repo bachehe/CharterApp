@@ -56,8 +56,8 @@ namespace CharterApp.ViewModels
                 xvalues[x-1] = x;
                 yvalues[x-1] = Math.Round(geometry.ZFunction(x), 2);
 
-                if (yvalues[x - 1] == 0 && x == 1)
-                    return;
+                //if (yvalues[x - 1] == 0 && yvalues[x] == 0)
+                //    return;
 
                 XValues.Add(x);
                 YValues.Add(yvalues[x-1]);

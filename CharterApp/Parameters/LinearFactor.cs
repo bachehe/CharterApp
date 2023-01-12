@@ -7,7 +7,7 @@
         public double Value { get; set; }
         public bool Validate()
         {
-            return Value >= 0 && Value <= 900;
+            return Value >= 0 && Value <= 9999;
         }
     }
 }

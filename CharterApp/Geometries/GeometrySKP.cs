@@ -13,7 +13,7 @@ namespace CharterApp.Models
         public Lamp Lamp { get; set; }
 
         public List<IParametr> Parameters => new() { _linearFactor, _angleFactor };
-        public string LegendLabel => $"{Lamp.LampName}, {_linearFactor.Name}: {_linearFactor.Value}μm, {_angleFactor.NameTetha}: {_angleFactor.Value}°";
+        public string LegendLabel => $"{Lamp.LampName}, {_linearFactor.Name}: {_linearFactor.Value}μm, α: {_angleFactor.Value}°";
 
 
         public GeometrySKP()

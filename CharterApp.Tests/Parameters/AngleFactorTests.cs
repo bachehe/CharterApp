@@ -1,4 +1,5 @@
 ﻿using CharterApp.Models;
+using CharterApp.Tests.Attribute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace CharterApp.Tests.Parameters
 {
+    [AngleFactor]
     public class AngleFactorTests
     {
         [Test]

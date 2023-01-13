@@ -1,4 +1,5 @@
 ﻿using CharterApp.Lamps;
+using CharterApp.Tests.Attribute;
 using CharterApp.ViewModels;
 using NUnit.Framework;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace CharterApp.Tests.ViewModels
 {
+    [LinearFactorCalculating]
     public class LinearFactorCalculatingViewModelTests
     {  
         [Test]

@@ -1,4 +1,5 @@
 ﻿using CharterApp.Models;
+using CharterApp.Tests.Attribute;
 using CharterApp.ViewModels;
 using Moq;
 using NUnit.Framework;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace CharterApp.Tests.ViewModels
 {
+    [Graph]
     public class GraphViewModelTests
     {
         [Test]

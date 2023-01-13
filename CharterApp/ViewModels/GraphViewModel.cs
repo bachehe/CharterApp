@@ -54,13 +54,10 @@ namespace CharterApp.ViewModels
             for (int x = 1; x < 91; x++)
             {
                 xvalues[x-1] = x;
-                yvalues[x-1] = Math.Round(geometry.ZFunction(x), 2);
-
-                //if (yvalues[x - 1] == 0 && yvalues[x] == 0)
-                //    return;
+                yvalues[x-1] = Math.Round(geometry.ZFunction(x), 4);
 
                 XValues.Add(x);
-                YValues.Add(yvalues[x-1]);
+                YValues.Add(Math.Round(yvalues[x-1],2 ));
 
                 if (double.IsInfinity(yvalues[x-1]) && double.IsNaN(yvalues[x-1]))
                     return;

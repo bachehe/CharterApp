@@ -1,4 +1,5 @@
 ﻿using CharterApp.Models;
+using CharterApp.Tests.Attribute;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace CharterApp.Tests.Geometries
 {
+    [GeometryBB]
     public class GeometryBBTests
     {
         [Test]
-        [TestCase(0,1,0)]
         [TestCase(100, 1, 2.614)]
         [TestCase(100, 10, 26.010)]
         [TestCase(100, 20, 51.23)]

@@ -1,4 +1,5 @@
-﻿using CharterApp.ViewModels;
+﻿using CharterApp.Tests.Attribute;
+using CharterApp.ViewModels;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace CharterApp.Tests.ViewModels
 {
+    [CalculateAbsorption]
     public class CalculateAbsorptionViewModelTests
     {
         [Test]

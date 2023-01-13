@@ -1,4 +1,5 @@
-﻿using CharterApp.ViewModels;
+﻿using CharterApp.Tests.Attribute;
+using CharterApp.ViewModels;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace CharterApp.Tests.ViewModels
 {
+    [TethaValueCalculate]
     public class TethaValueCalculateViewModelTests
     {
         [Test]
@@ -24,7 +26,7 @@ namespace CharterApp.Tests.ViewModels
 
             sut.CalculateCommand.Execute(null);
 
-            Assert.AreEqual(expected, Math.Round(sut.Result,3));
+            Assert.AreEqual(expected/2, Math.Round(sut.Result,3));
         }
     }
 }

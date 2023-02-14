@@ -12,16 +12,17 @@ namespace CharterApp.Tests.ViewModels
 {
     [LinearFactorCalculating]
     public class LinearFactorCalculatingViewModelTests
-    {  
+    {
         [Test]
         [TestCase("Cu", "Zn", 0.7, 0.3, LampEnum.Co, 8.6, 699.094)]
         [TestCase("H", "He", 0.5, 0.5, LampEnum.Mo, 1.85, 0.5324)]
         [TestCase("Li", "Be", 0.2, 0.8, LampEnum.Cr, 2.27, 6.3446)]
         [TestCase("Si", "Cl", 0.4, 0.6, LampEnum.Cu, 4.51, 413.3325)]
-        public void CalculateTest_For2Elements_ShouldReturnExpectedResult(string element1, string element2, decimal perc1, decimal perc2, LampEnum lampEnumer,  decimal density, decimal expected)
+        public void CalculateTest_For2Elements_ShouldReturnExpectedResult(string element1, string element2, 
+            decimal perc1, decimal perc2, LampEnum lampEnumer, decimal density, decimal expected)
         {
             var sut = new LinearFactorCalculatingViewModel();
-            var elements = new LampElement() { Element=element1, Percentage = perc1 };
+            var elements = new LampElement() { Element = element1, Percentage = perc1 };
             sut.Elements.Add(elements);
 
             elements = new LampElement() { Element = element2, Percentage = perc2 };
@@ -31,7 +32,7 @@ namespace CharterApp.Tests.ViewModels
             sut.Density = density;
             sut.CalculateCommand.Execute(null);
 
-            Assert.AreEqual(expected, sut.Result); 
+            Assert.AreEqual(expected, sut.Result);
         }
 
         [Test]
@@ -98,7 +99,7 @@ namespace CharterApp.Tests.ViewModels
         [TestCase("H", "He", "Li", "C", "V", "Be", "Co", "Br", "Si", "Cu", 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, LampEnum.Mo, 1.85, 36.6976)]
         [TestCase("Be", "Co", "Br", "Si", "Cu", "Li", "C", "V", "Zn", "Co", 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, LampEnum.Cr, 2.27, 258.5385)]
         [TestCase("Si", "Cl", "C", "N", "Zn", "Mn", "Li", "Be", "Co", "Br", 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, LampEnum.Cu, 4.51, 427.6675)]
-        public void CalculateTest_For10Elements_ShouldReturnExpectedResult(string element1, string element2, string element3, string element4, string element5, string element6, string element7, string element8,string element9, string element10, decimal perc1, decimal perc2, decimal perc3, decimal perc4, decimal perc5, decimal perc6, decimal perc7, decimal perc8, decimal perc9, decimal perc10, LampEnum lampEnumer, decimal density, decimal expected)
+        public void CalculateTest_For10Elements_ShouldReturnExpectedResult(string element1, string element2, string element3, string element4, string element5, string element6, string element7, string element8, string element9, string element10, decimal perc1, decimal perc2, decimal perc3, decimal perc4, decimal perc5, decimal perc6, decimal perc7, decimal perc8, decimal perc9, decimal perc10, LampEnum lampEnumer, decimal density, decimal expected)
         {
             var sut = new LinearFactorCalculatingViewModel();
             var elements = new LampElement() { Element = element1, Percentage = perc1 };

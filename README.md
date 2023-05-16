@@ -1,7 +1,7 @@
 # CharterApp
 
 Charter is app being a part of engineering diploma, simplifying x-ray research.
-App allows user to create 4 types of charts, based on its geometry:
+App allows user to create 3 types of charts, based on its geometry:
 
 ```
 BB
